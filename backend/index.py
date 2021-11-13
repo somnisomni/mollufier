@@ -1,8 +1,10 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from mollufy import mollufy as mollufy_internal
 
 server = Flask("mollufier")
+CORS(server)
 
 @server.route("/mollufy", methods=["POST"])
 def mollufy():
@@ -15,6 +17,7 @@ def mollufy():
     return jsonify(responseData)
 
 if __name__ == "__main__":
+  host = "127.0.0.1" if not os.environ["FLASK_HOST"] else os.environ["FLASK_HOST"]
   port = 50000 if not os.environ["FLASK_PORT"] else int(os.environ["FLASK_PORT"])
 
-  server.run(port=port)
+  server.run(host=host, port=port)
