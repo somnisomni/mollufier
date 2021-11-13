@@ -5,8 +5,6 @@ def mollufy(sentence):
   analyzed = kiwi.analyze(sentence, 10)
   mollufiedSentence = ""
 
-  print(analyzed, end='\n\n')
-
   offset = 0
 
   for token in analyzed[0][0]:
