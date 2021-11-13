@@ -1,9 +1,11 @@
-from kiwipiepy import Kiwi
-kiwi = Kiwi()
+from kiwi_init import initKiwi
+kiwi = initKiwi()
 
 def mollufy(sentence):
-  analyzed = kiwi.analyze(sentence)
+  analyzed = kiwi.analyze(sentence, 10)
   mollufiedSentence = ""
+
+  print(analyzed, end='\n\n')
 
   offset = 0
 
