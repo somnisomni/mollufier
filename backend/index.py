@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from mollufy import mollufy as mollufy_internal
 
@@ -14,4 +15,6 @@ def mollufy():
     return jsonify(responseData)
 
 if __name__ == "__main__":
-  server.run()
+  port = 50000 if not os.environ["FLASK_PORT"] else int(os.environ["FLASK_PORT"])
+
+  server.run(port=port)
