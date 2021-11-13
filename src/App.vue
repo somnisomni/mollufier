@@ -1,12 +1,20 @@
 <template>
   <div>
-    <textarea v-model="sentenceToMollu"
-              placeholder="몰?루화할 문장 입력" />
-    <button @click="doMollufy">몰?루화!</button>
-    <label><input v-model="ignoreNounLengthLimit" type="checkbox" />명사 단어 길이 제한 무시</label>
-    <textarea v-model="sentenceMollufied"
-              placeholder="몰?루화된 문장"
-              disabled />
+    <h1>몰?루파이어 <small>Mollufier</small></h1>
+    <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
+    <h4>사이트 디자인은 추후 작업 예정입니다... ㅠ</h4>
+
+    <div class="content">
+      <textarea v-model="sentenceToMollu"
+                placeholder="몰?루화할 문장 입력" />
+      <button @click="doMollufy">몰?루화!</button>
+      <label><input v-model="ignoreNounLengthLimit" type="checkbox" />명사 단어 길이 제한 무시</label>
+      <textarea v-model="sentenceMollufied"
+                placeholder="몰?루화된 문장"
+                disabled />
+    </div>
+
+    <div>Made by <a href="https://twitter.com/somni_somni">somni (@somni_somni)</a></div>
   </div>
 </template>
 
@@ -15,9 +23,13 @@ import { Vue } from "vue-class-component";
 import axios from "axios";
 
 export default class App extends Vue {
-  sentenceToMollu = "";
+  sentenceToMollu = "장비를 정지합니다";
   sentenceMollufied = "";
   ignoreNounLengthLimit = false;
+
+  created(): void {
+    this.doMollufy();
+  }
 
   async doMollufy() {
     try {
@@ -35,3 +47,21 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+textarea {
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  padding: 0 2vw;
+}
+
+.content > * {
+  margin: 0.5rem 0;
+}
+</style>
