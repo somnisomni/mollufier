@@ -9,9 +9,17 @@ CORS(server)
 @server.route("/mollufy", methods=["POST"])
 def mollufy():
   if request.is_json:
-    text = request.get_json()["sentence"]
+    requestContent = request.get_json()
+
+    text = requestContent["sentence"]
+    ignoreNounLengthLimit = False
+
+    if "options" in requestContent:
+      requestOptions = requestContent["options"]
+
+      if "ignoreNounLengthLimit" in requestOptions: ignoreNounLengthLimit = requestOptions["ignoreNounLengthLimit"]
     
-    responseData = { "content": mollufy_internal(text) }
+    responseData = { "content": mollufy_internal(text, ignoreNounLengthLimit) }
     return jsonify(responseData)
 
 if __name__ == "__main__":
