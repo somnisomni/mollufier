@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 export default class App extends Vue {
   sentenceToMollu = "";
