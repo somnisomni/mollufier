@@ -1,1 +1,2 @@
+Flask==2.0.2
 kiwipiepy==0.10.1
