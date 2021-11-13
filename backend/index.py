@@ -8,8 +8,6 @@ CORS(server)
 
 @server.route("/mollufy", methods=["POST"])
 def mollufy():
-  print(request.get_json())
-
   if request.is_json:
     text = request.get_json()["sentence"]
     
