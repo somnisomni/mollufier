@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import axios from "axios";
+import mollufy from "@/scripts/mollufy";
 
 export default class App extends Vue {
   sentenceToMollu = "장비를 정지합니다";
@@ -32,18 +32,12 @@ export default class App extends Vue {
   }
 
   async doMollufy() {
-    try {
-      const response = await axios.post(`${process.env.VUE_APP_BACKEND_BASE_URL}/mollufy`, {
-        sentence: this.sentenceToMollu,
-        options: {
-          ignoreNounLengthLimit: this.ignoreNounLengthLimit,
-        },
-      }, {
-        responseType: "json",
-      });
-
-      this.sentenceMollufied = response.data.content;
-    } catch { /* NO ACTION */ }
+    this.sentenceMollufied = await mollufy({
+      sentence: this.sentenceToMollu,
+      options: {
+        ignoreNounLengthLimit: this.ignoreNounLengthLimit,
+      },
+    });
   }
 }
 </script>
