@@ -6,7 +6,6 @@
       </div>
 
       <div class="content-container">
-        <h1>몰?루파이어 <small>Mollufier</small></h1>
         <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
         <h4>사이트 디자인은 추후 작업 예정입니다... ㅠ</h4>
 
