@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  shape-rendering: geometricPrecision;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.momotalk-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  .momotalk-container {
+    position: relative;
+    width: 80vw;
+    height: 40vw;
+    min-height: 350px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+
+    box-shadow: 0 0.3rem 0.75rem rgba(0, 0, 0, 0.25);
+
+    .title-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      width: 100%;
+      height: 3rem;
+      padding: 0 1rem;
+
+      background-color: #7DBDED;
+
+      .title {
+        font-family: "GyeonggiTitleM", sans-serif;
+        font-size: 1.5rem;
+
+        color: white;
+      }
+    }
+
+    .container-background-image {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 75%;
+      opacity: 0.25;
+      z-index: -1;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .momotalk-wrapper {
+    .momotalk-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+}

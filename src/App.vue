@@ -1,20 +1,31 @@
 <template>
-  <div>
-    <h1>몰?루파이어 <small>Mollufier</small></h1>
-    <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
-    <h4>사이트 디자인은 추후 작업 예정입니다... ㅠ</h4>
+  <div class="momotalk-wrapper">
+    <div class="momotalk-container">
+      <div class="title-container">
+        <span class="title">몰루파이어 <small>Mollufier</small></span>
+      </div>
 
-    <div class="content">
-      <textarea v-model="sentenceToMollu"
-                placeholder="몰?루화할 문장 입력" />
-      <button @click="doMollufy">몰?루화!</button>
-      <label><input v-model="ignoreNounLengthLimit" type="checkbox" />명사 단어 길이 제한 무시</label>
-      <textarea v-model="sentenceMollufied"
-                placeholder="몰?루화된 문장"
-                disabled />
+      <div class="content-container">
+        <h1>몰?루파이어 <small>Mollufier</small></h1>
+        <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
+        <h4>사이트 디자인은 추후 작업 예정입니다... ㅠ</h4>
+
+        <div class="content">
+          <textarea v-model="sentenceToMollu"
+                    placeholder="몰?루화할 문장 입력" />
+          <button @click="doMollufy">몰?루화!</button>
+          <label><input v-model="ignoreNounLengthLimit" type="checkbox" />명사 단어 길이 제한 무시</label>
+          <textarea v-model="sentenceMollufied"
+                    placeholder="몰?루화된 문장"
+                    disabled />
+        </div>
+
+        <div>Made by <a href="https://twitter.com/somni_somni">somni (@somni_somni)</a></div>
+      </div>
+
+      <img class="container-background-image"
+           src="@/assets/images/mollu_coconattsu_corn.png" />
     </div>
-
-    <div>Made by <a href="https://twitter.com/somni_somni">somni (@somni_somni)</a></div>
   </div>
 </template>
 
@@ -50,7 +61,7 @@ textarea {
 
 .content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   max-width: 500px;
   padding: 0 2vw;
 }
