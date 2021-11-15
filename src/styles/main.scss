@@ -119,6 +119,7 @@ html, body {
 
         .chat-item {
           display: flex;
+          align-items: flex-start;
           padding: 1rem 0;
 
           &.user {
