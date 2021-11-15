@@ -17,7 +17,24 @@
         </div>
 
         <div class="content-wrapper">
-          <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
+          <div class="chat-item user">
+            <div class="chat-balloon">
+              사용자 입력 채팅
+            </div>
+          </div>
+
+          <div class="chat-item mollu">
+            <img class="profile-image" src="@/assets/images/mollu_coconattsu-corn.png" />
+
+            <div class="chat-balloon-wrapper">
+              <div class="profile-name">아로?나</div>
+              <div class="chat-balloon">
+                사용?자 입?력 채?팅
+              </div>
+            </div>
+          </div>
+
+          <!-- <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
           <h4>사이트 디자인은 추후 작업 예정입니다... ㅠ</h4>
 
           <div class="content">
@@ -30,12 +47,12 @@
                       disabled />
           </div>
 
-          <div>Made by <a href="https://twitter.com/somni_somni">somni (@somni_somni)</a></div>
+          <div>Made by <a href="https://twitter.com/somni_somni">somni (@somni_somni)</a></div> -->
         </div>
       </div>
 
       <img class="container-background-image"
-           src="@/assets/images/mollu_coconattsu_corn.png" />
+           src="@/assets/images/mollu_coconattsu-corn.png" />
     </div>
   </div>
 </template>
@@ -63,21 +80,3 @@ export default class App extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-textarea {
-  min-width: 300px;
-  min-height: 200px;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  max-width: 500px;
-  padding: 0 2vw;
-}
-
-.content > * {
-  margin: 0.5rem 0;
-}
-</style>
