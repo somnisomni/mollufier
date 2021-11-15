@@ -1,13 +1,20 @@
 @font-face {
-  font-family: "GyeonggiBatang";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff") format("woff");
+  font-family: "GyeonggiTitle";
+  src: url("../assets/fonts/GyeonggiTitle_Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "GyeonggiTitleM";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff") format("woff");
-  font-weight: normal;
+  font-family: "GyeonggiTitle";
+  src: url("../assets/fonts/GyeonggiTitle_Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GyeonggiTitle";
+  src: url("../assets/fonts/GyeonggiTitle_Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
 }
