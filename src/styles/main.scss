@@ -46,6 +46,11 @@ html, body {
       justify-content: space-between;
       align-items: center;
 
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+
       width: 100%;
       height: $momotalk-title-height;
       padding: 0 1rem;
@@ -54,9 +59,13 @@ html, body {
 
       .title {
         font-family: "GyeonggiTitleM", sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.66rem;
 
         color: white;
+      }
+
+      .title-icons-container {
+        flex-shrink: 0;
       }
     }
 
@@ -68,6 +77,8 @@ html, body {
       .left-tab {
         display: flex;
         flex-direction: column;
+        flex-shrink: 0;
+
         width: $momotalk-left-tab-width;
         background-color: #4C5B70;
 
