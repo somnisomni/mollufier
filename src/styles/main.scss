@@ -104,8 +104,9 @@ html, body {
       position: absolute;
       right: 0;
       bottom: 0;
+      max-width: calc(80vw - $momotalk-left-tab-width);
       height: 75%;
-      max-height: 500px;
+      max-height: calc(80vw - $momotalk-left-tab-width);
       opacity: 0.25;
       z-index: -1;
     }
