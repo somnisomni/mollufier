@@ -11,8 +11,9 @@
 
       <div class="content-container">
         <div class="left-tab">
-          <div class="tab"></div>
-          <div class="tab"></div>
+          <div class="tab active"><img src="@/assets/images/mdi-pencil.svg" /></div>
+          <div class="tab"><img src="@/assets/images/mdi-cog.svg" /></div>
+          <div class="tab"><img src="@/assets/images/mdi-info.svg" /></div>
         </div>
 
         <div class="content-wrapper">
