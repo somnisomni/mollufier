@@ -113,48 +113,81 @@ html, body {
       }
 
       .content-wrapper {
-        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: calc(100% - $momotalk-left-tab-width);
         padding: 0 1rem;
+        font-size: 1.1rem;
 
-        .chat-item {
-          display: flex;
-          align-items: flex-start;
-          padding: 1rem 0;
+        & > * {
+          width: 100%;
+        }
 
-          &.user {
-            justify-content: flex-end;
-
-            .chat-balloon {
-              background-color: #FB93A4;
-            }
-          }
-
-          &.mollu {
-            justify-content: flex-start;
-
-            .profile-image {
-              width: 48px;
-              height: 48px;
-              border-radius: 100%;
-            }
-
-            .chat-balloon-wrapper {
-              display: flex;
-              flex-direction: column;
-              margin-left: 0.5rem;
-
+        .chat-container {
+          .chat-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem 0;
+  
+            &.user {
+              justify-content: flex-end;
+  
               .chat-balloon {
-                margin-top: 0.25rem;
-                background-color: #4C5B70;
+                background-color: #FB93A4;
               }
             }
+  
+            &.mollu {
+              justify-content: flex-start;
+  
+              .profile-image {
+                width: 48px;
+                height: 48px;
+                border-radius: 100%;
+              }
+  
+              .chat-balloon-wrapper {
+                display: flex;
+                flex-direction: column;
+                margin-left: 0.5rem;
+  
+                .chat-balloon {
+                  margin-top: 0.25rem;
+                  background-color: #4C5B70;
+                }
+              }
+            }
+  
+            .chat-balloon {
+              padding: 0.5rem;
+              color: white;
+              border-radius: 0.5rem;
+            }
           }
+        }
 
-          .chat-balloon {
-            padding: 0.5rem;
-            color: white;
-            border-radius: 0.5rem;
+        .input-container {
+          $input-height: 36px;
+
+          display: flex;
+          margin-bottom: 1rem;
+          
+          input {
+            flex-grow: 1;
+            height: $input-height;
+            padding: 0 0.75rem;
+            font-family: inherit;
+            font-size: inherit;
+
+            background-color: rgba(255, 255, 255, 0.66);
+            backdrop-filter: blur(4px);
+            border: solid 2px #4C5B70;
+            border-radius: $input-height;
+
+            &:focus-visible {
+              outline: none;
+            }
           }
         }
       }

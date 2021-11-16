@@ -17,21 +17,29 @@
         </div>
 
         <div class="content-wrapper">
-          <div class="chat-item user">
-            <div class="chat-balloon">
-              사용자 입력 채팅
+          <div class="chat-container">
+            <div class="chat-item user">
+              <div class="chat-balloon">
+                사용자 입력 채팅
+              </div>
+            </div>
+
+            <div class="chat-item mollu">
+              <img class="profile-image" src="@/assets/images/mollu_coconutcorn.png" />
+
+              <div class="chat-balloon-wrapper">
+                <div class="profile-name">아로?나</div>
+                <div class="chat-balloon">
+                  사용?자 입?력 채?팅
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="chat-item mollu">
-            <img class="profile-image" src="@/assets/images/mollu_coconattsu-corn.png" />
-
-            <div class="chat-balloon-wrapper">
-              <div class="profile-name">아로?나</div>
-              <div class="chat-balloon">
-                사용?자 입?력 채?팅
-              </div>
-            </div>
+          <div class="input-container">
+            <input v-model="sentenceToMollu"
+                   type="text"
+                   placeholder="몰?루화할 문장 입력..." />
           </div>
 
           <!-- <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
@@ -52,7 +60,7 @@
       </div>
 
       <img class="container-background-image"
-           src="@/assets/images/mollu_coconattsu-corn.png" />
+           src="@/assets/images/mollu_coconutcorn.png" />
     </div>
   </div>
 </template>
