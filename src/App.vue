@@ -60,7 +60,6 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import { Watch } from "vue-property-decorator";
 import mollufy from "@/scripts/mollufy";
 
 interface IChatItem {
