@@ -19,26 +19,28 @@
         <div class="content-wrapper">
           <div class="chat-container"
                ref="chatContainer">
-            <div v-for="(chat, index) in chats"
-                 :key="index"
-                 class="chat-item"
-                 :class="{ user: chat.by === 'user', mollu: chat.by === 'arona' }">
-              <div v-if="chat.by === 'user'"
-                   class="chat-balloon">
-                {{ chat.content }}
-              </div>
+            <transition-group name="slide-up">
+              <div v-for="chat in chats"
+                  :key="chat.hash"
+                  class="chat-item"
+                  :class="{ user: chat.by === 'user', mollu: chat.by === 'arona' }">
+                <div v-if="chat.by === 'user'"
+                    class="chat-balloon">
+                  {{ chat.content }}
+                </div>
 
-              <div v-else-if="chat.by === 'arona'">
-                <img class="profile-image" src="@/assets/images/mollu_coconutcorn.png" />
+                <div v-else-if="chat.by === 'arona'">
+                  <img class="profile-image" src="@/assets/images/mollu_coconutcorn.png" />
 
-                <div class="chat-balloon-wrapper">
-                  <div class="profile-name">아로?나</div>
-                  <div class="chat-balloon">
-                    {{ chat.content }}
+                  <div class="chat-balloon-wrapper">
+                    <div class="profile-name">아로?나</div>
+                    <div class="chat-balloon">
+                      {{ chat.content }}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </transition-group>
           </div>
 
           <div class="input-container">
@@ -60,11 +62,13 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
+import stringHash from "string-hash";
 import mollufy from "@/scripts/mollufy";
 
 interface IChatItem {
   by: "user" | "arona",
   content: string,
+  hash: number,
 }
 
 export default class App extends Vue {
@@ -85,6 +89,7 @@ export default class App extends Vue {
       this.chats.push({
         by: "user",
         content: this.sentenceToMollu,
+        hash: stringHash(this.sentenceToMollu),
       });
 
       this.sentenceToMollu = "";
@@ -100,6 +105,7 @@ export default class App extends Vue {
       this.chats.push({
         by: "arona",
         content: mollufied,
+        hash: stringHash(mollufied),
       });
 
       /* SCROLL CHAT CONTAINER TO BOTTOM */

@@ -1,0 +1,11 @@
+.slide-up {
+  &-enter-active,
+  &-leave-active {
+    transition: translate 0.25s cubic-bezier(0, 0, 0, 1);
+  }
+
+  &-enter-from,
+  &-leave-to {
+    translate: transformY(-50%);
+  }
+}
