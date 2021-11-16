@@ -78,37 +78,39 @@ export default class App extends Vue {
   }
 
   async doMollufy() {
-    const sentence = this.sentenceToMollu;
+    const sentence = this.sentenceToMollu.trim();
 
-    /* USER CHAT */
-    this.chats.push({
-      by: "user",
-      content: this.sentenceToMollu,
-    });
-
-    this.sentenceToMollu = "";
-
-    /* ARONA(MOLLU) CHAT */
-    const mollufied = await mollufy({
-      sentence,
-      options: {
-        ignoreNounLengthLimit: this.ignoreNounLengthLimit,
-      },
-    });
-
-    this.chats.push({
-      by: "arona",
-      content: mollufied,
-    });
-
-    /* SCROLL CHAT CONTAINER TO BOTTOM */
-    setTimeout(() => {
-      const chatContainer = this.$refs.chatContainer as HTMLElement;
-      chatContainer.scrollTo({
-        top: chatContainer.scrollHeight,
-        behavior: "smooth",
+    if(sentence.length > 0) {
+      /* USER CHAT */
+      this.chats.push({
+        by: "user",
+        content: this.sentenceToMollu,
       });
-    }, 50);
+
+      this.sentenceToMollu = "";
+
+      /* ARONA(MOLLU) CHAT */
+      const mollufied = await mollufy({
+        sentence,
+        options: {
+          ignoreNounLengthLimit: this.ignoreNounLengthLimit,
+        },
+      });
+
+      this.chats.push({
+        by: "arona",
+        content: mollufied,
+      });
+
+      /* SCROLL CHAT CONTAINER TO BOTTOM */
+      setTimeout(() => {
+        const chatContainer = this.$refs.chatContainer as HTMLElement;
+        chatContainer.scrollTo({
+          top: chatContainer.scrollHeight,
+          behavior: "smooth",
+        });
+      }, 50);
+    }
   }
 }
 </script>

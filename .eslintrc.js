@@ -15,6 +15,14 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     quotes: ["warn", "double"],
+    "keyword-spacing": ["error", {
+      overrides: {
+        for: { after: false },
+        if: { after: false },
+        switch: { after: false },
+        while: { after: false },
+      },
+    }],
     "lines-between-class-members": "off",
   },
 };

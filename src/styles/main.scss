@@ -226,6 +226,13 @@ html, body {
             background-color: #FEFEFE;
             backdrop-filter: blur(4px);
             box-shadow: 0 0.125rem 0.25rem rgba(251, 147, 164, 1);
+
+            transition: box-shadow 0.15s cubic-bezier(0, 0, 0, 1);
+
+            &:active {
+              box-shadow: 0 0.05rem 0.125rem rgba(251, 147, 164, 1),
+                          0 0.1rem 0.2rem rgba(251, 147, 164, 1) inset;
+            }
           }
         }
       }
