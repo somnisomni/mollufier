@@ -17,20 +17,25 @@
         </div>
 
         <div class="content-wrapper">
-          <div class="chat-container">
-            <div class="chat-item user">
-              <div class="chat-balloon">
-                사용자 입력 채팅
+          <div class="chat-container"
+               ref="chatContainer">
+            <div v-for="(chat, index) in chats"
+                 :key="index"
+                 class="chat-item"
+                 :class="{ user: chat.by === 'user', mollu: chat.by === 'arona' }">
+              <div v-if="chat.by === 'user'"
+                   class="chat-balloon">
+                {{ chat.content }}
               </div>
-            </div>
 
-            <div class="chat-item mollu">
-              <img class="profile-image" src="@/assets/images/mollu_coconutcorn.png" />
+              <div v-else-if="chat.by === 'arona'">
+                <img class="profile-image" src="@/assets/images/mollu_coconutcorn.png" />
 
-              <div class="chat-balloon-wrapper">
-                <div class="profile-name">아로?나</div>
-                <div class="chat-balloon">
-                  사용?자 입?력 채?팅
+                <div class="chat-balloon-wrapper">
+                  <div class="profile-name">아로?나</div>
+                  <div class="chat-balloon">
+                    {{ chat.content }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -39,23 +44,11 @@
           <div class="input-container">
             <input v-model="sentenceToMollu"
                    type="text"
-                   placeholder="몰?루화할 문장 입력..." />
-          </div>
+                   placeholder="몰?루화할 문장 입력..."
+                   autofocus />
 
-          <!-- <h4>한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi" target="_blank">Kiwi</a>를 이용해 문장을 몰?루화해줍니다.</h4>
-          <h4>사이트 디자인은 추후 작업 예정입니다... ㅠ</h4>
-
-          <div class="content">
-            <textarea v-model="sentenceToMollu"
-                      placeholder="몰?루화할 문장 입력" />
             <button @click="doMollufy">몰?루화!</button>
-            <label><input v-model="ignoreNounLengthLimit" type="checkbox" />명사 단어 길이 제한 무시</label>
-            <textarea v-model="sentenceMollufied"
-                      placeholder="몰?루화된 문장"
-                      disabled />
           </div>
-
-          <div>Made by <a href="https://twitter.com/somni_somni">somni (@somni_somni)</a></div> -->
         </div>
       </div>
 
@@ -67,24 +60,56 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
+import { Watch } from "vue-property-decorator";
 import mollufy from "@/scripts/mollufy";
+
+interface IChatItem {
+  by: "user" | "arona",
+  content: string,
+}
 
 export default class App extends Vue {
   sentenceToMollu = "장비를 정지합니다";
-  sentenceMollufied = "";
   ignoreNounLengthLimit = false;
+
+  chats: Array<IChatItem> = [];
 
   created(): void {
     this.doMollufy();
   }
 
   async doMollufy() {
-    this.sentenceMollufied = await mollufy({
-      sentence: this.sentenceToMollu,
+    const sentence = this.sentenceToMollu;
+
+    /* USER CHAT */
+    this.chats.push({
+      by: "user",
+      content: this.sentenceToMollu,
+    });
+
+    this.sentenceToMollu = "";
+
+    /* ARONA(MOLLU) CHAT */
+    const mollufied = await mollufy({
+      sentence,
       options: {
         ignoreNounLengthLimit: this.ignoreNounLengthLimit,
       },
     });
+
+    this.chats.push({
+      by: "arona",
+      content: mollufied,
+    });
+
+    /* SCROLL CHAT CONTAINER TO BOTTOM */
+    setTimeout(() => {
+      const chatContainer = this.$refs.chatContainer as HTMLElement;
+      chatContainer.scrollTo({
+        top: chatContainer.scrollHeight,
+        behavior: "smooth",
+      });
+    }, 50);
   }
 }
 </script>

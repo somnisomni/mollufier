@@ -1,3 +1,10 @@
+@mixin prevent-user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 * {
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
@@ -44,14 +51,11 @@ html, body {
     transition: width 0.5s cubic-bezier(0, 0, 0, 1), height 0.5s cubic-bezier(0, 0, 0, 1);
 
     .title-container {
+      @include prevent-user-select;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-      -webkit-user-drag: none;
 
       width: 100%;
       height: $momotalk-title-height;
@@ -78,6 +82,8 @@ html, body {
       font-size: 16px;
 
       .left-tab {
+        @include prevent-user-select;
+
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
@@ -125,6 +131,14 @@ html, body {
         }
 
         .chat-container {
+          padding: 0 0.5rem;
+          flex-grow: 1;
+          overflow: auto;
+
+          &::-webkit-scrollbar {
+            width: 0;
+          }
+
           .chat-item {
             display: flex;
             align-items: flex-start;
@@ -140,21 +154,26 @@ html, body {
   
             &.mollu {
               justify-content: flex-start;
-  
-              .profile-image {
-                width: 48px;
-                height: 48px;
-                border-radius: 100%;
-              }
-  
-              .chat-balloon-wrapper {
+
+              & > div {
                 display: flex;
-                flex-direction: column;
-                margin-left: 0.5rem;
-  
-                .chat-balloon {
-                  margin-top: 0.25rem;
-                  background-color: #4C5B70;
+                flex-direction: row;
+    
+                .profile-image {
+                  width: 48px;
+                  height: 48px;
+                  border-radius: 100%;
+                }
+    
+                .chat-balloon-wrapper {
+                  display: flex;
+                  flex-direction: column;
+                  margin-left: 0.5rem;
+    
+                  .chat-balloon {
+                    margin-top: 0.25rem;
+                    background-color: #4C5B70;
+                  }
                 }
               }
             }
@@ -171,23 +190,42 @@ html, body {
           $input-height: 36px;
 
           display: flex;
+          flex-direction: row;
+          align-items: center;
           margin-bottom: 1rem;
+
+          & * {
+            font-family: inherit;
+            font-size: inherit;
+          }
           
           input {
             flex-grow: 1;
+            min-width: 0;
             height: $input-height;
             padding: 0 0.75rem;
-            font-family: inherit;
-            font-size: inherit;
 
-            background-color: rgba(255, 255, 255, 0.66);
+            background-color: rgba(254, 254, 254, 0.66);
             backdrop-filter: blur(4px);
-            border: solid 2px #4C5B70;
+            border: solid 2px #FB93A4;
             border-radius: $input-height;
 
             &:focus-visible {
               outline: none;
             }
+          }
+
+          button {
+            cursor: pointer;
+
+            padding: 0.5rem;
+            margin-left: 0.5rem;
+
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #FEFEFE;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0.125rem 0.25rem rgba(251, 147, 164, 1);
           }
         }
       }
@@ -212,6 +250,23 @@ html, body {
       width: 100%;
       height: 100%;
       border-radius: 0;
+
+      .content-container {
+        .content-wrapper {
+          .input-container {
+            flex-direction: column;
+
+            & > * {
+              width: 100%;
+            }
+
+            button {
+              margin-left: initial;
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }
     }
   }
 }
