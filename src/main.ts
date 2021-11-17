@@ -4,5 +4,8 @@ import App from "@/App.vue";
 import "@/styles/fonts.scss";
 import "@/styles/transitions.scss";
 import "@/styles/main.scss";
+import router from "./router";
 
-createApp(App).mount("#app");
+createApp(App)
+  .use(router)
+  .mount("#app");
