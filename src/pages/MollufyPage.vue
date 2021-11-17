@@ -33,7 +33,6 @@ import { IChatItem } from "@/scripts/interfaces";
 })
 export default class MollufyPage extends Vue {
   sentenceToMollu = "장비를 정지합니다";
-  ignoreNounLengthLimit = false;
 
   chats: Array<IChatItem> = [];
 
@@ -58,7 +57,7 @@ export default class MollufyPage extends Vue {
       const mollufied = await mollufy({
         sentence,
         options: {
-          ignoreNounLengthLimit: this.ignoreNounLengthLimit,
+          ignoreNounLengthLimit: this.$store.state.mollufyOptions.ignoreNounLengthLimit,
         },
       });
 

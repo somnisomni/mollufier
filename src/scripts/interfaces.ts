@@ -3,3 +3,7 @@ export interface IChatItem {
   content: string,
   hash: number,
 }
+
+export interface IMollufyOptions {
+  ignoreNounLengthLimit: boolean,
+}
