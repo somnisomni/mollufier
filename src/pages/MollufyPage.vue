@@ -54,12 +54,16 @@ export default class MollufyPage extends Vue {
       this.sentenceToMollu = "";
 
       /* ARONA(MOLLU) CHAT */
-      const mollufied = await mollufy({
+      let mollufied = await mollufy({
         sentence,
         options: {
           ignoreNounLengthLimit: this.$store.state.mollufyOptions.ignoreNounLengthLimit,
         },
       });
+
+      if(this.$store.state.mollufyOptions.forceMollufyForPredefinedWords) {
+        mollufied = mollufied.replaceAll("몰루", "몰?루");
+      }
 
       this.chats.push({
         by: "arona",
