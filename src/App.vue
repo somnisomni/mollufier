@@ -2,7 +2,7 @@
   <div class="momotalk-wrapper">
     <div class="momotalk-container">
       <div class="title-container">
-        <span class="title">몰루파이어 <small>Mollufier</small></span>
+        <span class="title">몰?루파이어 <small>Mollufier</small></span>
 
         <div class="title-icons-container">
 
