@@ -251,7 +251,7 @@ html, body {
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 750px), (max-height: 450px) {
   .momotalk-wrapper {
     .momotalk-container {
       width: 100%;
