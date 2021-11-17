@@ -45,6 +45,7 @@
 
           <div class="input-container">
             <input v-model="sentenceToMollu"
+                   @keypress.ctrl.enter="doMollufy"
                    type="text"
                    placeholder="몰?루화할 문장 입력..."
                    autofocus />
