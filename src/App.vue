@@ -20,26 +20,9 @@
           <div class="chat-container"
                ref="chatContainer">
             <transition-group name="slide-up">
-              <div v-for="chat in chats"
-                  :key="chat.hash"
-                  class="chat-item"
-                  :class="{ user: chat.by === 'user', mollu: chat.by === 'arona' }">
-                <div v-if="chat.by === 'user'"
-                    class="chat-balloon">
-                  {{ chat.content }}
-                </div>
-
-                <div v-else-if="chat.by === 'arona'">
-                  <img class="profile-image" src="@/assets/images/mollu_coconutcorn.png" />
-
-                  <div class="chat-balloon-wrapper">
-                    <div class="profile-name">아로?나</div>
-                    <div class="chat-balloon">
-                      {{ chat.content }}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <chat-item v-for="chat in chats"
+                         :key="chat.hash"
+                         :chatData="chat" />
             </transition-group>
           </div>
 
@@ -62,16 +45,17 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
 import stringHash from "string-hash";
+import ChatItem from "@/components/ChatItem.vue";
 import mollufy from "@/scripts/mollufy";
+import { IChatItem } from "@/scripts/interfaces";
 
-interface IChatItem {
-  by: "user" | "arona",
-  content: string,
-  hash: number,
-}
-
+@Options({
+  components: {
+    ChatItem,
+  },
+})
 export default class App extends Vue {
   sentenceToMollu = "장비를 정지합니다";
   ignoreNounLengthLimit = false;
