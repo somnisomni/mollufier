@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    appVersion: "0.2.0",
+    appVersion: "0.2.1",
 
     mollufyOptions: {
       ignoreNounLengthLimit: false,
