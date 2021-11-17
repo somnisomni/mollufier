@@ -99,7 +99,7 @@ html, body {
 
           transition: background-color 0.25s;
 
-          &.active,
+          &.router-link-active,
           &:hover {
             background-color: #637790;
 
@@ -123,7 +123,7 @@ html, body {
         flex-direction: column;
         justify-content: space-between;
         width: calc(100% - $momotalk-left-tab-width);
-        padding: 0 1rem;
+        padding: 1rem;
         font-size: 1.1rem;
 
         & > * {
@@ -144,6 +144,10 @@ html, body {
             align-items: flex-start;
             padding: 1rem 0;
   
+            &:first-child {
+              padding-top: 0 !important;
+            }
+
             &.user {
               justify-content: flex-end;
   
@@ -194,7 +198,6 @@ html, body {
           display: flex;
           flex-direction: row;
           align-items: center;
-          margin-bottom: 1rem;
 
           & * {
             font-family: inherit;
