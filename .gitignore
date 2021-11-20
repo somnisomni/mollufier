@@ -22,3 +22,9 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+#Docker files
+.dockerignore
+Dockerfile
+docker-compose.debug.yml
+docker-compose.yml
