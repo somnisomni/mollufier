@@ -3,17 +3,17 @@
         ref="chatContainer">
     <transition-group name="slide-up">
       <chat-item v-for="chat in chats"
-                  :key="chat.hash"
-                  :chatData="chat" />
+                 :key="chat.hash"
+                 :chatData="chat" />
     </transition-group>
   </div>
 
   <div class="input-container">
     <input v-model="sentenceToMollu"
-            @keypress.ctrl.enter="doMollufy"
-            type="text"
-            placeholder="몰?루화할 문장 입력..."
-            autofocus />
+           @keydown.ctrl.enter.exact="doMollufy"
+           type="text"
+           placeholder="몰?루화할 문장 입력..."
+           autofocus />
 
     <button @click="doMollufy">몰?루화!</button>
   </div>
@@ -41,6 +41,7 @@ export default class MollufyPage extends Vue {
   }
 
   async doMollufy() {
+    console.log("doMollufy");
     const sentence = this.sentenceToMollu.trim();
 
     if(sentence.length > 0) {
