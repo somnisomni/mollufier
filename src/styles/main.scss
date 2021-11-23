@@ -123,7 +123,7 @@ html, body {
         flex-direction: column;
         justify-content: space-between;
         width: calc(100% - $momotalk-left-tab-width);
-        padding: 1rem;
+        padding: 0 1rem 1rem 1rem;
         font-size: 1.1rem;
 
         & > * {
@@ -143,10 +143,6 @@ html, body {
             display: flex;
             align-items: flex-start;
             padding: 1rem 0;
-  
-            &:first-child {
-              padding-top: 0 !important;
-            }
 
             &.user {
               justify-content: flex-end;
@@ -243,6 +239,10 @@ html, body {
               background-color: rgb(255, 240, 243);
             }
           }
+        }
+
+        .settings-container {
+          padding-top: 1rem;
         }
       }
     }
