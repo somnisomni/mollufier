@@ -62,7 +62,12 @@ export default class MollufyPage extends Vue {
       });
 
       if(this.$store.state.mollufyOptions.forceMollufyForPredefinedWords) {
-        mollufied = mollufied.replaceAll("몰루", "몰?루");
+        ["몰루", "아루", "네루", "코하루"].forEach((word) => {
+          const startWord = word.slice(0, word.length - 1);
+          const endWord = word.slice(word.length - 1);
+
+          mollufied = mollufied.replaceAll(word, `${startWord}?${endWord}`);
+        });
       }
 
       this.chats.push({
