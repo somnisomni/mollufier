@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export async function get(endpoint: string) {
-  const response = await axios.get(`${process.env.VUE_APP_BACKEND_BASE_URL}/${endpoint}`, {
+  const response = await axios.get(`${process.env.VUE_APP_BACKEND_BASE_URL}/${endpoint.replace(/^\/+/, "")}`, {
     responseType: "json",
   });
 
@@ -9,7 +9,7 @@ export async function get(endpoint: string) {
 }
 
 export async function post(endpoint: string, jsonData: Record<string, unknown>) {
-  const response = await axios.post(`${process.env.VUE_APP_BACKEND_BASE_URL}/${endpoint}`, jsonData, {
+  const response = await axios.post(`${process.env.VUE_APP_BACKEND_BASE_URL}/${endpoint.replace(/^\/+/, "")}`, jsonData, {
     responseType: "json",
   });
 
