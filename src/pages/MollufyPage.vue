@@ -40,8 +40,11 @@ export default class MollufyPage extends Vue {
     this.doMollufy();
   }
 
+  activated(): void {
+    this.chatContainerScrollToEnd();
+  }
+
   async doMollufy() {
-    console.log("doMollufy");
     const sentence = this.sentenceToMollu.trim();
 
     if(sentence.length > 0) {
@@ -78,14 +81,17 @@ export default class MollufyPage extends Vue {
       });
 
       /* SCROLL CHAT CONTAINER TO BOTTOM */
-      setTimeout(() => {
-        const chatContainer = this.$refs.chatContainer as HTMLElement;
-        chatContainer.scrollTo({
-          top: chatContainer.scrollHeight,
-          behavior: "smooth",
-        });
-      }, 50);
+      setTimeout(this.chatContainerScrollToEnd, 50);
     }
+  }
+
+  chatContainerScrollToEnd(): void {
+    const chatContainer = this.$refs.chatContainer as HTMLElement;
+
+    chatContainer.scrollTo({
+      top: chatContainer.scrollHeight,
+      behavior: "smooth",
+    });
   }
 }
 </script>
