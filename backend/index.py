@@ -23,7 +23,7 @@ def mollufy():
     return jsonify(responseData)
 
 if __name__ == "__main__":
-  host = "127.0.0.1" if not os.environ["FLASK_HOST"] else os.environ["FLASK_HOST"]
-  port = 50000 if not os.environ["FLASK_PORT"] else int(os.environ["FLASK_PORT"])
+  host = "127.0.0.1" if not "FLASK_HOST" in os.environ else os.environ["FLASK_HOST"]
+  port = 50000 if not "FLASK_PORT" in os.environ else int(os.environ["FLASK_PORT"])
 
   server.run(host=host, port=port)
