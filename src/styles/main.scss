@@ -199,28 +199,53 @@ html, body {
             font-family: inherit;
             font-size: inherit;
           }
-          
-          input {
+
+          .input-area-wrapper {
+            display: flex;
             flex-grow: 1;
-            min-width: 0;
-            height: $input-height;
-            padding: 0 0.75rem;
+            flex-direction: row;
+            align-items: center;
 
-            background-color: rgba(254, 254, 254, 0.66);
-            backdrop-filter: blur(4px);
-            border: solid 2px #FB93A4;
-            border-radius: $input-height;
+            button {
+              width: $input-height;
+              margin-top: initial !important;
+              margin-left: initial;
+              margin-right: 0.5rem;
+              padding: 0.25rem;
+            }
 
-            &:focus-visible {
-              outline: none;
+            input {
+              flex-grow: 1;
+              min-width: 0;
+              height: $input-height;
+              padding: 0 0.75rem;
+  
+              background-color: rgba(254, 254, 254, 0.66);
+              backdrop-filter: blur(4px);
+              border: solid 2px #FB93A4;
+              border-radius: $input-height;
+  
+              &:focus-visible {
+                outline: none;
+              }
             }
           }
 
           button {
+            &, & * {
+              @include prevent-user-select;
+            }
+
             cursor: pointer;
 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: $input-height;
             padding: 0.5rem;
             margin-left: 0.5rem;
+            text-align: center;
 
             border: none;
             border-radius: 0.5rem;
