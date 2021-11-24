@@ -1,5 +1,5 @@
 <figure>
-  <p align="center"><img width="80%" src="docs/images/Screenshot-Mollufy-v0.2.3.png" style="max-width: 988px"></p>
+  <p align="center"><img src="docs/images/Screenshot-Mollufy-v0.2.3.png" style="max-width: 988px"></p>
   <figcaption><p align="center" style="color: gray">" 내가 몰?루가 될께... "</p></figcaption>
 </figure>
 
@@ -16,7 +16,7 @@
 아이디어
 --------
 <figure>
-  <p align="center"><img width="80%" src="docs/images/Idea-Tweet-SDSK.png" style="max-width: 826px"></p>
+  <p align="center"><img src="docs/images/Idea-Tweet-SDSK.png" style="max-width: 826px"></p>
   <figcaption><p align="center" style="color: gray"><s>그런거 없으면 만들면 된다!</s></p></figcaption>
 </figure>
 
