@@ -19,6 +19,7 @@
       </button>
 
       <input v-model="sentenceToMollu"
+             @keydown.enter.exact="doMollufy"
              @keydown.ctrl.enter.exact="doMollufy"
              type="text"
              placeholder="몰?루화할 문장 입력..."
