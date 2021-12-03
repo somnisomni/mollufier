@@ -1,3 +1,13 @@
+@keyframes mollu-loop {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
 .slide-up {
   &-enter-active,
   &-leave-active {

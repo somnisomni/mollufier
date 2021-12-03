@@ -12,6 +12,12 @@
         일부 단어 강제 몰?루화<br>
         <small>문장에 "몰루"와 같이 잘 알려진 밈 단어가 발견되면 "몰?루"와 같이 무조건 치환됩니다.</small>
       </label>
+
+      <label style="margin-top: 1rem">
+        <input v-model="enableMolluImageAnimation" type="checkbox" />
+        몰?루 배경 일러스트 애니메이션 활성화<br>
+        <small>"정말 꼴받게 하네요~"</small>
+      </label>
     </div>
 
     <div><br><br>더 많은 설정이 구현될 예정입니다!</div>
@@ -36,6 +42,14 @@ export default class SettingsPage extends Vue {
 
   set forceMollufyForPredefinedWords(value: boolean) {
     this.$store.commit("forceMollufyForPredefinedWords", value);
+  }
+
+  get enableMolluImageAnimation() {
+    return this.$store.state.enableMolluImageAnimation;
+  }
+
+  set enableMolluImageAnimation(value: boolean) {
+    this.$store.commit("enableMolluImageAnimation", value);
   }
 }
 </script>

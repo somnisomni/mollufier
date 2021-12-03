@@ -4,6 +4,7 @@ declare module "@vue/runtime-core" {
   interface State {
     appVersion: string,
 
+    enableMolluImageAnimation: boolean,
     mollufyOptions: IMollufyOptions,
   }
 

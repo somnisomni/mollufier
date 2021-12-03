@@ -281,6 +281,14 @@ html, body {
       max-height: calc(80vw - $momotalk-left-tab-width);
       opacity: 0.2;
       z-index: -1;
+
+      &.anim {
+        animation-name: mollu-loop;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: steps(2, jump-none);
+      }
     }
   }
 }

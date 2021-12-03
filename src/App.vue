@@ -35,7 +35,9 @@
       </div>
 
       <img class="container-background-image"
-           src="@/assets/images/mollu_coconutcorn.png" />
+           src="@/assets/images/mollu_coconutcorn.png"
+           alt="블루아카콘 by coconutcorn - 몰?루 이미지"
+           :class="{ anim: $store.state.enableMolluImageAnimation }" />
     </div>
   </div>
 </template>
