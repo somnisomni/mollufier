@@ -4,6 +4,7 @@
     <p>준비중입니당!</p>
     <p>Made by <a href="https://twitter.com/somni_somni" target="_blank">somni (@somni_somni)</a></p>
     <p>지능형 한국어 형태소 분석기 <a href="https://github.com/bab2min/Kiwi">Kiwi</a> 사용</p>
+    <p>소스 코드 : <a href="https://github.com/somnisomni/mollufier">GitHub</a></p>
     <p><a href="https://www.pixiv.net/artworks/89423246">블루아카콘</a> by <a href="https://www.pixiv.net/users/64509815" target="_blank">coconutcorn</a></p>
   </div>
 </template>
