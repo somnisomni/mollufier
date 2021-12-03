@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    appVersion: "0.2.3",
+    appVersion: "0.3.0",
 
     enableMolluImageAnimation: true,
     mollufyOptions: {
