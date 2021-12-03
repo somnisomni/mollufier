@@ -8,6 +8,7 @@ def mollufy(sentence, noLenLimit=False):
   for token in reversed(analyzed):
     if token.tag.startswith("N") and ((noLenLimit and token.len >= 2) or token.len == 2):
       leftEndPos = token.start + (token.len - 1)
-      mollufiedSentence=mollufiedSentence[:leftEndPos] + '?' + mollufiedSentence[leftEndPos:]
+
+      mollufiedSentence = "{}?{}".format(mollufiedSentence[:leftEndPos], mollufiedSentence[leftEndPos:])
 
   return mollufiedSentence
