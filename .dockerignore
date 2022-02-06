@@ -1,0 +1,12 @@
+# Exclude IDE specific files
+.vscode
+.editorconfig
+
+# Exclude backend pycache (will be created in entrypoint)
+backend/__pycache__
+
+# Exclude frontend node_modules (will be created during build stage)
+frontend/node_modules
+
+# Exclude frontend env files (will be created during build stage)
+frontend/.env.*
