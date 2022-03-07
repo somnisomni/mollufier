@@ -11,6 +11,9 @@ ENV PUBLIC_PATH=${FE_PUBLIC_PATH}
 ARG FE_BACKEND_BASE_URL="/api"
 ENV BACKEND_BASE_URL=${FE_BACKEND_BASE_URL}
 
+ARG FE_GA_MEASUREMENT_ID=""
+ENV GA_MEASUREMENT_ID=${FE_GA_MEASUREMENT_ID}
+
 # Install Node.js global dependencies
 RUN npm install -f -g yarn @vue/cli
 
@@ -19,7 +22,9 @@ WORKDIR /build
 
 # Copy frontend sources and create .env.local
 COPY frontend .
-RUN echo "VUE_APP_BACKEND_BASE_URL=\"${BACKEND_BASE_URL}\"" > .env.local
+RUN echo "" > .env.local; \
+    echo "VUE_APP_BACKEND_BASE_URL=\"${BACKEND_BASE_URL}\"" >> .env.local; \
+    echo "VUE_APP_GA_MEASUREMENT_ID=\"${GA_MEASUREMENT_ID}\"" >> .env.local
 
 # Do build
 RUN yarn install
