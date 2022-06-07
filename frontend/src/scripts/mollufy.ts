@@ -11,8 +11,24 @@ interface IMollufyResponse {
   content: string,
 }
 
-export default async function mollufy(request: IMollufyRequest): Promise<string> {
-  const content = await Backend.post("/mollufy", request as unknown as Record<string, unknown>) as IMollufyResponse;
+export async function checkHealth(): Promise<boolean> {
+  try {
+    const content = await Backend.post("/mollufy", { sentence: "HEALTH CHECK" }) as IMollufyResponse;
 
-  return content.content;
+    if(content.content) {
+      return true;
+    }
+  } catch { /* NOOP */ }
+
+  return false;
+}
+
+export default async function mollufy(request: IMollufyRequest): Promise<string | null> {
+  try {
+    const content = await Backend.post("/mollufy", request as unknown as Record<string, unknown>) as IMollufyResponse;
+
+    return content.content;
+  } catch {
+    return null;
+  }
 }

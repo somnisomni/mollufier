@@ -14,6 +14,7 @@
   <div class="input-container">
     <div class="input-area-wrapper">
       <button title="채팅 내역 비우기"
+              :disabled="mollufyDisabled"
               @click="clearChats">
         <img src="@/assets/images/mdi-delete.svg" />
       </button>
@@ -21,12 +22,14 @@
       <input v-model="sentenceToMollu"
              @keydown.enter.exact="doMollufy"
              @keydown.ctrl.enter.exact="doMollufy"
+             :disabled="mollufyDisabled"
              type="text"
              placeholder="몰?루화할 문장 입력..."
              autofocus />
     </div>
 
-    <button @click="doMollufy">몰?루화!</button>
+    <button @click="doMollufy"
+            :disabled="mollufyDisabled">몰?루화!</button>
   </div>
 </template>
 
@@ -34,7 +37,7 @@
 import { Options, Vue } from "vue-class-component";
 import stringHash from "string-hash";
 import ChatItem from "@/components/ChatItem.vue";
-import mollufy from "@/scripts/mollufy";
+import mollufy, { checkHealth } from "@/scripts/mollufy";
 import { IChatItem } from "@/scripts/interfaces";
 
 @Options({
@@ -43,11 +46,28 @@ import { IChatItem } from "@/scripts/interfaces";
   },
 })
 export default class MollufyPage extends Vue {
-  sentenceToMollu = "장비를 정지합니다";
+  sentenceToMollu = "블루 아카이브 정말 건전하고 건강하고 밝은 게임인데...";
+  mollufyDisabled = false;
 
   chats: Array<IChatItem> = [];
 
-  created(): void {
+  async created(): Promise<void> {
+    /* SERVER HEALTH CHECK */
+    if(!await checkHealth()) {
+      const errorMessage = "몰?루파이어 서버에 연결할 수 없습니다. 나중에 다시 접속해주세요.";
+
+      this.chats.push({
+        by: "arona",
+        content: errorMessage,
+        hash: stringHash(errorMessage),
+      });
+
+      this.sentenceToMollu = "";
+      this.mollufyDisabled = true;
+      return;
+    }
+
+    /* INITIAL MOLLUFY */
     this.doMollufy();
   }
 
@@ -76,20 +96,22 @@ export default class MollufyPage extends Vue {
         },
       });
 
-      if(this.$store.state.mollufyOptions.forceMollufyForPredefinedWords) {
-        ["몰루", "아루", "네루", "코하루"].forEach((word) => {
-          const startWord = word.slice(0, word.length - 1);
-          const endWord = word.slice(word.length - 1);
+      if(mollufied) {
+        if(this.$store.state.mollufyOptions.forceMollufyForPredefinedWords) {
+          ["몰루", "아루", "네루", "코하루"].forEach((word) => {
+            const startWord = word.slice(0, word.length - 1);
+            const endWord = word.slice(word.length - 1);
 
-          mollufied = mollufied.replaceAll(word, `${startWord}?${endWord}`);
+            mollufied = mollufied!.replaceAll(word, `${startWord}?${endWord}`);
+          });
+        }
+
+        this.chats.push({
+          by: "arona",
+          content: mollufied,
+          hash: stringHash(mollufied),
         });
       }
-
-      this.chats.push({
-        by: "arona",
-        content: mollufied,
-        hash: stringHash(mollufied),
-      });
 
       /* SCROLL CHAT CONTAINER TO BOTTOM */
       setTimeout(this.chatContainerScrollToEnd, 50);

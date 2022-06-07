@@ -183,6 +183,10 @@ html, body {
                   display: flex;
                   flex-direction: column;
                   margin-left: 0.5rem;
+
+                  .profile-name {
+                    @include prevent-user-select;
+                  }
     
                   .chat-balloon {
                     margin-top: 0.25rem;
@@ -267,13 +271,24 @@ html, body {
 
             transition: box-shadow 0.15s cubic-bezier(0, 0, 0, 1), background-color 0.25s;
 
-            &:active {
-              box-shadow: 0 0.05rem 0.125rem rgba(251, 147, 164, 1),
-                          0 0.1rem 0.2rem rgba(251, 147, 164, 1) inset;
+            &:disabled {
+              cursor: initial;
+              color: rgba(0, 0, 0, 0.33);
+
+              & > img {
+                filter: opacity(0.33);
+              }
             }
 
-            &:hover {
-              background-color: rgb(255, 240, 243);
+            &:not(:disabled) {
+              &:active {
+                box-shadow: 0 0.05rem 0.125rem rgba(251, 147, 164, 1),
+                            0 0.1rem 0.2rem rgba(251, 147, 164, 1) inset;
+              }
+  
+              &:hover {
+                background-color: rgb(255, 240, 243);
+              }
             }
           }
         }
