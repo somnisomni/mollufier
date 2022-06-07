@@ -7,7 +7,9 @@
     </div>
 
     <div v-else>
-      <img class="profile-image" src="@/assets/images/mollu_coconutcorn.png" />
+      <img class="profile-image"
+           src="@/assets/images/mollu_coconutcorn.png"
+           alt="아로나 프로필 이미지" />
 
       <div class="chat-balloon-wrapper">
         <div class="profile-name">아로?나</div>

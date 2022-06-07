@@ -13,15 +13,18 @@
         <div class="left-tab">
           <router-link to="/"
                        class="tab active">
-            <img src="@/assets/images/mdi-pencil.svg" />
+            <img src="@/assets/images/mdi-pencil.svg"
+                 alt="메인 페이지" />
           </router-link>
           <router-link to="/settings"
                        class="tab">
-            <img src="@/assets/images/mdi-cog.svg" />
+            <img src="@/assets/images/mdi-cog.svg"
+                 alt="설정 페이지" />
           </router-link>
           <router-link to="/about"
                        class="tab">
-            <img src="@/assets/images/mdi-info.svg" />
+            <img src="@/assets/images/mdi-info.svg"
+                 alt="몰?루파이어 정보 페이지" />
           </router-link>
         </div>
 

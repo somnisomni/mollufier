@@ -1,20 +1,28 @@
 <template>
   <div class="settings-container">
     <div style="display: flex; flex-direction: column">
-      <label>
-        <input v-model="ignoreNounLengthLimit" type="checkbox" />
+      <label for="ignoreNounLengthLimit">
+        <input v-model="ignoreNounLengthLimit"
+               type="checkbox"
+               name="ignoreNounLengthLimit" />
         명사 길이 제한 무시<br>
         <small>세 글자 이상의 명사도 몰?루화합니다.</small>
       </label>
 
-      <label style="margin-top: 1rem">
-        <input v-model="forceMollufyForPredefinedWords" type="checkbox" />
+      <label for="forceMollufyForPredefinedWords"
+             style="margin-top: 1rem">
+        <input v-model="forceMollufyForPredefinedWords"
+               type="checkbox"
+               name="forceMollufyForPredefinedWords" />
         일부 단어 강제 몰?루화<br>
         <small>문장에 "몰루"와 같이 잘 알려진 밈 단어가 발견되면 "몰?루"와 같이 무조건 치환됩니다.</small>
       </label>
 
-      <label style="margin-top: 1rem">
-        <input v-model="enableMolluImageAnimation" type="checkbox" />
+      <label for="enableMolluImageAnimation"
+             style="margin-top: 1rem">
+        <input v-model="enableMolluImageAnimation"
+               type="checkbox"
+               name="enableMolluImageAnimation" />
         몰?루 배경 일러스트 애니메이션 활성화<br>
         <small>"정말 꼴받게 하네요~"</small>
       </label>

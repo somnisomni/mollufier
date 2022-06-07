@@ -1,3 +1,5 @@
+<!-- eslint-disable vuejs-accessibility/form-control-has-label vuejs-accessibility/no-autofocus -->
+
 <template>
   <div class="chat-container"
         ref="chatContainer">
@@ -16,7 +18,8 @@
       <button title="채팅 내역 비우기"
               :disabled="mollufyDisabled"
               @click="clearChats">
-        <img src="@/assets/images/mdi-delete.svg" />
+        <img src="@/assets/images/mdi-delete.svg"
+             alt="몰?루화 내역 삭제" />
       </button>
 
       <input v-model="sentenceToMollu"
