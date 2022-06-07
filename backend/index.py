@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from mollufy import mollufy as mollufy_internal
 
-
 server = Flask("mollufier")
 CORS(server, origins=["*" if not "FE_DEPLOY_HOST" in os.environ else os.environ["FE_DEPLOY_HOST"]])
 
