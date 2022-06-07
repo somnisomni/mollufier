@@ -51,7 +51,7 @@ RUN apt-get -y update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js global dependencies
-RUN npm install -f -g http-server
+RUN npm install -f --location=global http-server
 
 # Working directory
 WORKDIR /app
