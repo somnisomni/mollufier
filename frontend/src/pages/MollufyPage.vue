@@ -54,17 +54,7 @@ export default class MollufyPage extends Vue {
   async created(): Promise<void> {
     /* SERVER HEALTH CHECK */
     if(!await checkHealth()) {
-      const errorMessage = "몰?루파이어 서버에 연결할 수 없습니다. 나중에 다시 접속해주세요.";
-
-      this.chats.push({
-        by: "arona",
-        content: errorMessage,
-        hash: stringHash(errorMessage),
-      });
-
-      this.sentenceToMollu = "";
-      this.mollufyDisabled = true;
-      return;
+      this.onServerNotRespond();
     }
 
     /* INITIAL MOLLUFY */
@@ -111,6 +101,8 @@ export default class MollufyPage extends Vue {
           content: mollufied,
           hash: stringHash(mollufied),
         });
+      } else {
+        this.onServerNotRespond();
       }
 
       /* SCROLL CHAT CONTAINER TO BOTTOM */
@@ -129,6 +121,19 @@ export default class MollufyPage extends Vue {
       top: chatContainer.scrollHeight,
       behavior: "smooth",
     });
+  }
+
+  onServerNotRespond() {
+    const errorMessage = "몰?루파이어 서버에 연결할 수 없습니다. 페이지를 새로고침해보거나 나중에 다시 접속해주세요.";
+
+    this.chats.push({
+      by: "arona",
+      content: errorMessage,
+      hash: stringHash(errorMessage),
+    });
+
+    this.sentenceToMollu = "";
+    this.mollufyDisabled = true;
   }
 }
 </script>
