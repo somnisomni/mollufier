@@ -2,7 +2,7 @@
 
 ## FRONTEND BUILDER ##
 # Use Debian Bullseye based Node.js 16 LTS image
-FROM node:16-bullseye-slim as builder
+FROM node:16-bullseye-slim AS builder
 
 # Buid arguments
 ARG FE_PUBLIC_PATH="/"
@@ -34,7 +34,7 @@ RUN rm -rf ./dist && yarn build --mode production
 ## SERVICE CONTAINER ##
 # Use Debian Bullseye based Node.js 16 LTS image
 # We can't use Alpine based image due to error with Kiwi dependency installation
-FROM node:16-bullseye-slim as runner
+FROM node:16-bullseye-slim AS runner
 
 # Container labels
 LABEL org.opencontainers.image.title="Mollufier"
