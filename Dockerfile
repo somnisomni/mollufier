@@ -15,7 +15,7 @@ ARG FE_GA_MEASUREMENT_ID=""
 ENV GA_MEASUREMENT_ID=${FE_GA_MEASUREMENT_ID}
 
 # Install Node.js global dependencies
-RUN npm install -f -g yarn @vue/cli
+RUN npm install -f --location=global yarn @vue/cli
 
 # Working directory
 WORKDIR /build
