@@ -2,6 +2,7 @@
 node_modules
 /dist
 
+# dev server script
 run-devserver.sh
 
 # local env files
