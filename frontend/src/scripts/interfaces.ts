@@ -6,6 +6,7 @@ export interface IChatItem {
 
 export interface IMollufyOptions {
   ignoreNounLengthLimit: boolean,
+  changeMolluMark: boolean,
   forceMollufyForPredefinedWords: boolean,
 }
 

@@ -13,14 +13,18 @@ def mollufy():
 
     text = requestContent["sentence"]
     ignoreNounLengthLimit = False
+    changeMolluMark = False
 
     if "options" in requestContent:
       requestOptions = requestContent["options"]
 
       if "ignoreNounLengthLimit" in requestOptions:
         ignoreNounLengthLimit = requestOptions["ignoreNounLengthLimit"]
+
+      if "changeMolluMark" in requestOptions:
+        changeMolluMark = requestOptions["changeMolluMark"]
     
-    responseData = { "content": mollufy_internal(text, ignoreNounLengthLimit) }
+    responseData = { "content": mollufy_internal(text, ignoreNounLengthLimit, changeMolluMark) }
     return jsonify(responseData)
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import unittest
 from mollufy import mollufy
 
-class MollufyTest(unittest.TestCase):
+class MollufyTestSimple(unittest.TestCase):
   def test_mollufy_word_2chars(self):
     # TEST 1: Mollufy simple 2-characters noun word
     self.assertEqual(mollufy.mollufy("블루"), "블?루")
@@ -26,6 +26,7 @@ class MollufyTest(unittest.TestCase):
     self.assertEqual(mollufy.mollufy("그만해", True), "그만해")
     self.assertEqual(mollufy.mollufy("냠냠쩝쩝", True), "냠냠쩝쩝")
 
+class MollufyTestSentence(unittest.TestCase):
   def test_mollufy_sentence_with_one_2chars_word(self):
     # TEST 5: Mollufy sentence with one 2-characters noun word
     self.assertEqual(mollufy.mollufy("안녕하세요"), "안?녕하세요")
@@ -55,6 +56,7 @@ class MollufyTest(unittest.TestCase):
     self.assertEqual(mollufy.mollufy("그래픽 디자인은 특정 메시지 (혹은 콘텐츠)와 이를 전달하려는 대상자에게 걸맞은 매체 (인쇄물, 웹사이트, 동영상 등)를 선택하여 표현 또는 제작하는 창의적인 과정이다."),
                                      "그래픽 디자인은 특?정 메시지 (혹은 콘텐츠)와 이를 전?달하려는 대상자에게 걸맞은 매?체 (인쇄물, 웹사이트, 동영상 등)를 선?택하여 표?현 또는 제?작하는 창?의적인 과?정이다.")
 
+class MollufyTestMeme(unittest.TestCase):
   def test_mollufy_meme_words(self):
     # TEST 10: Meme words
     self.assertEqual(mollufy.mollufy("몰루"), "몰?루")
@@ -67,6 +69,13 @@ class MollufyTest(unittest.TestCase):
     self.assertEqual(mollufy.mollufy("몰루는건가..."), "몰?루는건가...")
     self.assertEqual(mollufy.mollufy("내가 몰루가 될께..."), "내가 몰?루가 될께...")
 
+class MollufyTestAltmark(unittest.TestCase):
+  def test_mollufy_altmark(self):
+    # TEST 12: Mollufy with alternative mark: [!]
+    self.assertEqual(mollufy.mollufy("바람", alternativeMark=True), "바!람")
+    self.assertEqual(mollufy.mollufy("아루", alternativeMark=True), "아!루")
+    self.assertEqual(mollufy.mollufy("스튜디오", True, True), "스튜디!오")
+    self.assertEqual(mollufy.mollufy("각설탕을 커피에 타먹으면 달게요 안 달게요~", True, True), "각설!탕을 커!피에 타먹으면 달게요 안 달게요~")
 
 if __name__ == "__main__":
   unittest.main()

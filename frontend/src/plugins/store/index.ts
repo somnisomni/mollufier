@@ -8,6 +8,7 @@ export default createStore({
     enableMolluImageAnimation: true,
     mollufyOptions: {
       ignoreNounLengthLimit: false,
+      changeMolluMark: false,
       forceMollufyForPredefinedWords: true,
     },
   },
@@ -17,6 +18,9 @@ export default createStore({
     },
     ignoreNounLengthLimit(state, payload: boolean) {
       state.mollufyOptions.ignoreNounLengthLimit = payload;
+    },
+    changeMolluMark(state, payload: boolean) {
+      state.mollufyOptions.changeMolluMark = payload;
     },
     forceMollufyForPredefinedWords(state, payload: boolean) {
       state.mollufyOptions.forceMollufyForPredefinedWords = payload;

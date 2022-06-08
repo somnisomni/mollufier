@@ -86,6 +86,7 @@ export default class MollufyPage extends Vue {
         sentence,
         options: {
           ignoreNounLengthLimit: this.$store.state.mollufyOptions.ignoreNounLengthLimit,
+          changeMolluMark: this.$store.state.mollufyOptions.changeMolluMark,
         },
       });
 

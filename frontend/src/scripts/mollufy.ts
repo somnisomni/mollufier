@@ -4,6 +4,7 @@ interface IMollufyRequest {
   sentence: string,
   options: {
     ignoreNounLengthLimit: boolean,
+    changeMolluMark: boolean,
   },
 }
 
