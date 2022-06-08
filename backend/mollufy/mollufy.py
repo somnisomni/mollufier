@@ -1,4 +1,5 @@
-from kiwi_init import initKiwi
+from mollufy.kiwi_init import initKiwi
+
 kiwi = initKiwi()
 
 def mollufy(sentence, noLenLimit=False):

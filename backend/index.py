@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from mollufy import mollufy as mollufy_internal
+from mollufy.mollufy import mollufy as mollufy_internal
 
 server = Flask("mollufier")
 CORS(server, origins=["*" if not "FE_DEPLOY_HOST" in os.environ else os.environ["FE_DEPLOY_HOST"]])
@@ -17,7 +17,8 @@ def mollufy():
     if "options" in requestContent:
       requestOptions = requestContent["options"]
 
-      if "ignoreNounLengthLimit" in requestOptions: ignoreNounLengthLimit = requestOptions["ignoreNounLengthLimit"]
+      if "ignoreNounLengthLimit" in requestOptions:
+        ignoreNounLengthLimit = requestOptions["ignoreNounLengthLimit"]
     
     responseData = { "content": mollufy_internal(text, ignoreNounLengthLimit) }
     return jsonify(responseData)
