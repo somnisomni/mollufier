@@ -45,6 +45,8 @@ Docker로 배포하기
      -e FE_DEPLOY_HOST=<frontend deployment host(domain)> \
      -p <host (frontend)>:8080 \
      -p <host (backend)>:8081 \
+     --restart unless-stopped \
+     --name mollufier \
      mollufier:latest
    ```
    - **환경 변수 `FE_DEPLOY_HOST`** : *(선택적, 기본값 공란)* 앱의 프론트엔드가 배포되는 호스트(도메인)입니다.  
