@@ -29,7 +29,7 @@ class MollufyTestSimple(unittest.TestCase):
 class MollufyTestSentence(unittest.TestCase):
   def test_mollufy_sentence_with_one_2chars_word(self):
     # TEST 5: Mollufy sentence with one 2-characters noun word
-    self.assertEqual(mollufy.mollufy("안녕하세요"), "안?녕하세요")
+    self.assertEqual(mollufy.mollufy("귀가하세요"), "귀?가하세요")
     self.assertEqual(mollufy.mollufy("바다에 갑시다"), "바?다에 갑시다")
     self.assertEqual(mollufy.mollufy("재미있는 게임인데"), "재미있는 게?임인데")
 
