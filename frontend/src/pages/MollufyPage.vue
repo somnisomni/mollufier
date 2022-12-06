@@ -51,6 +51,7 @@ import { IChatItem } from "@/scripts/interfaces";
 export default class MollufyPage extends Vue {
   sentenceToMollu = "블루 아카이브 정말 건전하고 건강하고 밝은 게임인데...";
   mollufyDisabled = false;
+  mollufiable = true; // abuse guard
 
   chats: Array<IChatItem> = [];
 
@@ -69,6 +70,11 @@ export default class MollufyPage extends Vue {
   }
 
   async doMollufy() {
+    if(!this.mollufiable) {
+      alert("너무 빠르게 몰?루화하면 아로?나가 아파해요!");
+      return;
+    }
+
     const sentence = this.sentenceToMollu.trim();
 
     if(sentence.length > 0) {
@@ -111,6 +117,10 @@ export default class MollufyPage extends Vue {
 
       /* SCROLL CHAT CONTAINER TO BOTTOM */
       setTimeout(this.chatContainerScrollToEnd, 50);
+
+      /* ABUSE GUARD */
+      this.mollufiable = false;
+      setTimeout(() => { this.mollufiable = true; }, 500);
     }
   }
 
