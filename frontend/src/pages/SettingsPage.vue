@@ -33,8 +33,6 @@
         <small>"정말 꼴받게 하네요~"</small>
       </label>
     </div>
-
-    <div><br><br>더 많은 설정이 구현될 예정입니다!</div>
   </div>
 </template>
 
