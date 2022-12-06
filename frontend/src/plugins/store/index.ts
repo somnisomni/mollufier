@@ -4,6 +4,7 @@ import { version } from "@/../package.json";
 export default createStore({
   state: {
     appVersion: version,
+    gaEnabled: false,
 
     enableMolluImageAnimation: true,
     mollufyOptions: {
@@ -13,6 +14,9 @@ export default createStore({
     },
   },
   mutations: {
+    setGAEnabledState(state, payload: boolean) {
+      state.gaEnabled = payload;
+    },
     enableMolluImageAnimation(state, payload: boolean) {
       state.enableMolluImageAnimation = payload;
     },

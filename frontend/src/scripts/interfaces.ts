@@ -12,6 +12,7 @@ export interface IMollufyOptions {
 
 export interface IStoreState {
   appVersion: string,
+  gaEnabled: boolean,
 
   enableMolluImageAnimation: boolean,
   mollufyOptions: IMollufyOptions,

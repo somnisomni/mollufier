@@ -9,6 +9,8 @@
     <p>소스 코드 : <a href="https://github.com/somnisomni/mollufier">GitHub</a></p>
     <p><a href="https://www.pixiv.net/artworks/89423246">블루아카콘</a> by <a href="https://www.pixiv.net/users/64509815" target="_blank">coconutcorn</a></p>
     <p>배경 이미지 from 게임 "블루아카이브"<br><small>Copyright ⓒ NEXON GAMES Co., Ltd.</small></p>
+    <br />
+    <p v-if="$store.state.gaEnabled">이 웹 앱은 Google Analytics를 사용합니다.</p>
   </div>
 </template>
 

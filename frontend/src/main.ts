@@ -15,8 +15,16 @@ app.use(router);
 
 if(process.env.NODE_ENV === "production" && process.env.VUE_APP_GA_MEASUREMENT_ID) {
   app.use(VueGtag, {
-    config: { id: process.env.VUE_APP_GA_MEASUREMENT_ID },
-  });
+    config: {
+      id: process.env.VUE_APP_GA_MEASUREMENT_ID,
+      params: {
+        anonymize_ip: true,
+      },
+    },
+    onReady() {
+      store.commit("setGAEnabledState", true);
+    },
+  }, router);
 }
 
 app.mount("#app");
