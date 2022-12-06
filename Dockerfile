@@ -1,8 +1,8 @@
 ### Dockerfile for Mollufier ###
 
 ## FRONTEND BUILDER ##
-# Use Debian Bullseye based Node.js 16 LTS image
-FROM node:16-bullseye-slim AS builder
+# Use Debian Bullseye based Node.js 18 LTS image
+FROM node:18-bullseye-slim AS builder
 
 # Buid arguments
 ARG FE_PUBLIC_PATH="/"
@@ -22,7 +22,7 @@ WORKDIR /build
 
 # Copy frontend sources and create .env.local
 COPY frontend .
-RUN echo "" > .env.local; \
+RUN touch .env.local; \
     echo "VUE_APP_BACKEND_BASE_URL=\"${BACKEND_BASE_URL}\"" >> .env.local; \
     echo "VUE_APP_GA_MEASUREMENT_ID=\"${GA_MEASUREMENT_ID}\"" >> .env.local
 
@@ -32,9 +32,9 @@ RUN rm -rf ./dist && yarn build --mode production
 
 
 ## SERVICE CONTAINER ##
-# Use Debian Bullseye based Node.js 16 LTS image
+# Use Debian Bullseye based Node.js 18 LTS image
 # We can't use Alpine based image due to error with Kiwi dependency installation
-FROM node:16-bullseye-slim AS runner
+FROM node:18-bullseye-slim AS runner
 
 # Container labels
 LABEL org.opencontainers.image.title="Mollufier"
