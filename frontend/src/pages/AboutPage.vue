@@ -10,7 +10,7 @@
     <p><a href="https://www.pixiv.net/artworks/89423246">블루아카콘</a> by <a href="https://www.pixiv.net/users/64509815" target="_blank">coconutcorn</a></p>
     <p>배경 이미지 from 게임 "블루아카이브"<br><small>Copyright ⓒ NEXON GAMES Co., Ltd.</small></p>
     <br />
-    <p v-if="$store.state.gaEnabled">이 웹 앱은 Google Analytics를 사용합니다.</p>
+    <p v-if="$store.state.gaEnabled">이 웹 앱은 Google Analytics를 사용합니다. 사용자가 입력한 문장은 Google 및 타 서비스에 공유하지 않습니다.</p>
   </div>
 </template>
 
