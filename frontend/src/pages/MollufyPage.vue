@@ -39,6 +39,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import stringHash from "string-hash";
+import { event } from "vue-gtag";
 import ChatItem from "@/components/ChatItem.vue";
 import mollufy, { checkHealth } from "@/scripts/mollufy";
 import { IChatItem } from "@/scripts/interfaces";
@@ -111,6 +112,14 @@ export default class MollufyPage extends Vue {
           content: mollufied,
           hash: stringHash(mollufied),
         });
+
+        /* Send GA event */
+        if(this.$store.state.gaEnabled) {
+          event("do_mollufy", {
+            event_category: "engagement",
+            event_label: "Mollufy success",
+          });
+        }
       } else {
         this.onServerNotRespond();
       }
@@ -148,6 +157,14 @@ export default class MollufyPage extends Vue {
 
     this.sentenceToMollu = "";
     this.mollufyDisabled = true;
+
+    /* Send GA event */
+    if(this.$store.state.gaEnabled) {
+      event("do_mollufy", {
+        event_category: "engagement",
+        event_label: "Mollufy failed (server error)",
+      });
+    }
   }
 }
 </script>
