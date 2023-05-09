@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from mollufy.mollufy import mollufy as mollufy_internal
 
+TEXT_LENGTH_LIMIT = 1000
+
 server = Flask("mollufier")
 CORS(server, origins=["*" if not "FE_DEPLOY_HOST" in os.environ else os.environ["FE_DEPLOY_HOST"]])
 
@@ -11,7 +13,7 @@ def mollufy():
   if request.is_json:
     requestContent = request.get_json()
 
-    text = requestContent["sentence"]
+    text = requestContent["sentence"][:TEXT_LENGTH_LIMIT]
     ignoreNounLengthLimit = False
     changeMolluMark = False
 
@@ -23,7 +25,7 @@ def mollufy():
 
       if "changeMolluMark" in requestOptions:
         changeMolluMark = requestOptions["changeMolluMark"]
-    
+
     responseData = { "content": mollufy_internal(text, ignoreNounLengthLimit, changeMolluMark) }
     return jsonify(responseData)
 

@@ -27,7 +27,8 @@
              @keydown.ctrl.enter.exact="doMollufy"
              :disabled="mollufyDisabled"
              type="text"
-             placeholder="몰?루화할 문장 입력..."
+             :placeholder="'몰?루화할 문장 입력... (최대 ' + TEXT_LENGTH_LIMIT.toLocaleString() + '자)'"
+             :maxlength="TEXT_LENGTH_LIMIT"
              autofocus />
     </div>
 
@@ -50,6 +51,8 @@ import { IChatItem } from "@/scripts/interfaces";
   },
 })
 export default class MollufyPage extends Vue {
+  readonly TEXT_LENGTH_LIMIT = 1000;
+
   sentenceToMollu = "블루 아카이브 정말 건전하고 건강하고 밝은 게임인데...";
   mollufyDisabled = false;
   mollufiable = true; // abuse guard
@@ -76,7 +79,7 @@ export default class MollufyPage extends Vue {
       return;
     }
 
-    const sentence = this.sentenceToMollu.trim();
+    const sentence = this.sentenceToMollu.trim().substring(0, this.TEXT_LENGTH_LIMIT);
 
     if(sentence.length > 0) {
       /* USER CHAT */

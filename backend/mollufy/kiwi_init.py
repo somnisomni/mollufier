@@ -9,7 +9,6 @@ def addWord(kiwi: Kiwi, word: str, tag: str, score: float = 0):
     sys.stderr.write("Word '{}' not added to Kiwi model (already exists)".format(word))
     sys.stderr.write(os.linesep)
 
-
 def initKiwi():
   kiwi = Kiwi()
 
