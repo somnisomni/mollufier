@@ -1,8 +1,8 @@
 ### Dockerfile for Mollufier ###
 
 ## FRONTEND BUILDER ##
-# Use Debian Bullseye based Node.js 18 LTS image
-FROM node:18-bullseye-slim AS builder
+# Use Debian Bullseye based Node.js 20 LTS image
+FROM node:20-bullseye-slim AS builder
 
 # Buid arguments
 ARG FE_PUBLIC_PATH="/"
@@ -32,9 +32,9 @@ RUN rm -rf ./dist && yarn build --mode production
 
 
 ## SERVICE CONTAINER ##
-# Use Debian Bullseye based Node.js 18 LTS image
+# Use Debian Bullseye based Node.js 20 LTS image
 # We can't use Alpine based image due to error with Kiwi dependency installation
-FROM node:18-bullseye-slim AS runner
+FROM node:20-bullseye-slim AS runner
 
 # Container labels
 LABEL org.opencontainers.image.title="Mollufier"
@@ -48,6 +48,7 @@ LABEL org.opencontainers.image.licenses="MIT"
 # Install Python 3
 RUN apt-get -y update \
     && apt-get install -y python3 python3-pip \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js global dependencies
