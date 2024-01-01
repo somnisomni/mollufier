@@ -22,6 +22,7 @@ module.exports = {
         while: { after: false },
       },
     }],
+    "comma-dangle": ["error", "always-multiline"],
     "lines-between-class-members": "off",
   },
 };
