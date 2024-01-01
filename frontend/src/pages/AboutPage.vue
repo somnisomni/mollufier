@@ -56,7 +56,7 @@
 
     <div v-if="useAppStore().gaEnabled">
       <hr />
-      <p>이 웹 앱은 방문 통계 확인용으로 Google Analytics를 사용합니다. 사용자가 입력한 문장 및 기타 민감한 데이터는 Google 및 타 서비스에 절대 공유하지 않습니다.</p>
+      <p>이 웹 앱은 방문 통계 확인용으로 Google Analytics를 사용합니다. 사용자가 입력한 문장 및 기타 민감한 데이터는 서버에 저장하거나 Google 및 타 서비스에 공유하지 않습니다.</p>
     </div>
   </div>
 </template>
