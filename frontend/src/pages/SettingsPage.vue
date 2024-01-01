@@ -37,40 +37,41 @@
 </template>
 
 <script lang="ts">
+import useSettingsStore from "@/plugins/store/settings";
 import { Component, Vue } from "vue-facing-decorator";
 
 @Component({})
 export default class SettingsPage extends Vue {
   get ignoreNounLengthLimit() {
-    return this.$store.state.mollufyOptions.ignoreNounLengthLimit;
+    return useSettingsStore().mollufyOptions.ignoreNounLengthLimit;
   }
 
   set ignoreNounLengthLimit(value: boolean) {
-    this.$store.commit("ignoreNounLengthLimit", value);
+    useSettingsStore().mollufyOptions.ignoreNounLengthLimit = value;
   }
 
   get changeMolluMark() {
-    return this.$store.state.mollufyOptions.changeMolluMark;
+    return useSettingsStore().mollufyOptions.changeMolluMark;
   }
 
   set changeMolluMark(value: boolean) {
-    this.$store.commit("changeMolluMark", value);
+    useSettingsStore().mollufyOptions.changeMolluMark = value;
   }
 
   get forceMollufyForPredefinedWords() {
-    return this.$store.state.mollufyOptions.forceMollufyForPredefinedWords;
+    return useSettingsStore().mollufyOptions.forceMollufyForPredefinedWords;
   }
 
   set forceMollufyForPredefinedWords(value: boolean) {
-    this.$store.commit("forceMollufyForPredefinedWords", value);
+    useSettingsStore().mollufyOptions.forceMollufyForPredefinedWords = value;
   }
 
   get enableMolluImageAnimation() {
-    return this.$store.state.enableMolluImageAnimation;
+    return useSettingsStore().enableMolluImageAnimation;
   }
 
   set enableMolluImageAnimation(value: boolean) {
-    this.$store.commit("enableMolluImageAnimation", value);
+    useSettingsStore().enableMolluImageAnimation = value;
   }
 }
 </script>

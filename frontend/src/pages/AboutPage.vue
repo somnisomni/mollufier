@@ -1,7 +1,7 @@
 <template>
   <div class="about-container">
     <div>
-      <h1>몰?루파이어 <small>v{{ $store.state.appVersion }}</small></h1>
+      <h1>몰?루파이어 <small>v{{ useAppStore().appVersion }}</small></h1>
       <p>명사 사이에 물음표를 넣어주어 문장을 "몰?루화"해줍니다.</p>
       <p style="color: gray"><s>프라나 사랑해</s></p>
     </div>
@@ -12,7 +12,7 @@
       <h2>참고 사항</h2>
       <p>
         <strong>이 웹 서비스는 팬메이드 사이트로, 수익을 얻기 위해 운영하는 사이트가 아닙니다.</strong><br />
-        이 웹 서비스는 게임 "블루 아카이브"의 개발사 및 유통/운영사와 전혀 무관한 사이트이며, 그러한 기업 또는 단체로부터 지원이나 지시를 받은 사실이 없습니다.<br />
+        이 웹 서비스는 게임 "블루 아카이브"의 개발사 및 유통/운영사와 전혀 무관한 사이트이며, 그러한 기업 또는 단체로부터 어떠한 형태로든 지원이나 지시를 받은 사실이 없습니다.<br />
         사용자는 이 웹 서비스를 이용하는 순간부터, <strong>사용자가 받는 모든 불이익에 대해 개발자는 책임질 의무가 없음에 동의</strong>한 것으로 간주합니다.<br />
 
       </p>
@@ -54,7 +54,7 @@
       </p>
     </div>
 
-    <div v-if="$store.state.gaEnabled">
+    <div v-if="useAppStore().gaEnabled">
       <hr />
       <p>이 웹 앱은 방문 통계 확인용으로 Google Analytics를 사용합니다. 사용자가 입력한 문장 및 기타 민감한 데이터는 Google 및 타 서비스에 절대 공유하지 않습니다.</p>
     </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script lang="ts">
+import useAppStore from "@/plugins/store/app";
 import { Component, Vue } from "vue-facing-decorator";
 
 interface ICredit {
@@ -86,6 +87,8 @@ interface IOpenSource {
 
 @Component({})
 export default class AboutPage extends Vue {
+  readonly useAppStore = useAppStore;
+
   readonly CREDITS: ICredit[] = [
     {
       description: "만든이",
@@ -195,12 +198,21 @@ export default class AboutPage extends Vue {
       },
     },
     {
-      name: "Vuex",
-      description: "Centralized State Management for Vue.js",
+      name: "Pinia",
+      description: "The intuitive store for Vue.js",
       license: "MIT License",
       link: {
-        name: "GitHub",
-        link: "https://github.com/vuejs/vuex",
+        name: "홈페이지",
+        link: "https://pinia.vuejs.org/",
+      },
+    },
+    {
+      name: "pinia-plugin-persistedstate",
+      description: "Configurable persistence and rehydration for Pinia stores",
+      license: "MIT License",
+      link: {
+        name: "홈페이지",
+        link: "https://prazdevs.github.io/pinia-plugin-persistedstate/",
       },
     },
     {

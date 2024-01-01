@@ -44,6 +44,8 @@ import { event } from "vue-gtag";
 import ChatItem from "@/components/ChatItem.vue";
 import mollufy, { checkHealth } from "@/scripts/mollufy";
 import { IChatItem } from "@/scripts/interfaces";
+import useSettingsStore from "@/plugins/store/settings";
+import useAppStore from "@/plugins/store/app";
 
 @Component({
   components: {
@@ -95,13 +97,13 @@ export default class MollufyPage extends Vue {
       let mollufied = await mollufy({
         sentence,
         options: {
-          ignoreNounLengthLimit: this.$store.state.mollufyOptions.ignoreNounLengthLimit,
-          changeMolluMark: this.$store.state.mollufyOptions.changeMolluMark,
+          ignoreNounLengthLimit: useSettingsStore().mollufyOptions.ignoreNounLengthLimit,
+          changeMolluMark: useSettingsStore().mollufyOptions.changeMolluMark,
         },
       });
 
       if(mollufied) {
-        if(this.$store.state.mollufyOptions.forceMollufyForPredefinedWords) {
+        if(useSettingsStore().mollufyOptions.forceMollufyForPredefinedWords) {
           ["몰루", "아루", "네루", "코하루"].forEach((word) => {
             const startWord = word.slice(0, word.length - 1);
             const endWord = word.slice(word.length - 1);
@@ -117,10 +119,11 @@ export default class MollufyPage extends Vue {
         });
 
         /* Send GA event */
-        if(this.$store.state.gaEnabled) {
+        if(useAppStore().gaEnabled) {
           event("do_mollufy", {
             event_category: "engagement",
             event_label: "Mollufy success",
+            description: useAppStore().appVersion,
           });
         }
       } else {
@@ -162,10 +165,11 @@ export default class MollufyPage extends Vue {
     this.mollufyDisabled = true;
 
     /* Send GA event */
-    if(this.$store.state.gaEnabled) {
+    if(useAppStore().gaEnabled) {
       event("do_mollufy", {
         event_category: "engagement",
         event_label: "Mollufy failed (server error)",
+        description: useAppStore().appVersion,
       });
     }
   }

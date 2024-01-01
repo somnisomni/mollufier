@@ -9,11 +9,3 @@ export interface IMollufyOptions {
   changeMolluMark: boolean,
   forceMollufyForPredefinedWords: boolean,
 }
-
-export interface IStoreState {
-  appVersion: string,
-  gaEnabled: boolean,
-
-  enableMolluImageAnimation: boolean,
-  mollufyOptions: IMollufyOptions,
-}

@@ -37,18 +37,22 @@
       <img class="container-background-image"
            src="@/assets/images/mollu_coconutcorn.png"
            alt="블루아카콘 by coconutcorn - 몰?루 이미지"
-           :class="{ anim: $store.state.enableMolluImageAnimation }" />
+           :class="{ anim: useSettingsStore().enableMolluImageAnimation }" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
+import useAppStore from "./plugins/store/app";
+import useSettingsStore from "./plugins/store/settings";
 
 @Component({})
 export default class App extends Vue {
+  readonly useSettingsStore = useSettingsStore;
+
   mounted(): void {
-    if(this.$store.state.gaEnabled) {
+    if(useAppStore().gaEnabled) {
       console.debug("Google Analytics enabled");
     }
   }
