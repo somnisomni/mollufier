@@ -1,4 +1,4 @@
-import * as Backend from "./util/axios-backend-helper";
+import * as Backend from "./util/backend-helper";
 
 interface IMollufyRequest {
   sentence: string,
@@ -14,9 +14,9 @@ interface IMollufyResponse {
 
 export async function checkHealth(): Promise<boolean> {
   try {
-    const content = await Backend.post("/mollufy", { sentence: "HEALTH CHECK" }) as IMollufyResponse;
+    const content = await Backend.post<IMollufyResponse>("/mollufy", { sentence: "HEALTH CHECK" });
 
-    if(content.content) {
+    if(content && content.content) {
       return true;
     }
   } catch { /* NOOP */ }
@@ -26,9 +26,9 @@ export async function checkHealth(): Promise<boolean> {
 
 export default async function mollufy(request: IMollufyRequest): Promise<string | null> {
   try {
-    const content = await Backend.post("/mollufy", request as unknown as Record<string, unknown>) as IMollufyResponse;
+    const content = await Backend.post<IMollufyResponse>("/mollufy", request as unknown as Record<string, unknown>);
 
-    return content.content;
+    return content?.content ?? null;
   } catch {
     return null;
   }
