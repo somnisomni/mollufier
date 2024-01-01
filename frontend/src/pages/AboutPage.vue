@@ -43,8 +43,7 @@
 
       <p v-for="os in OPENSOURCES" :key="os.name">
         <b>{{ os.name }}</b>
-        <span> — </span>
-        <span>{{ os.description }}</span>
+        <span v-if="os.description"> — {{ os.description }}</span>
 
         <small style="display: block; color: slategray">
           <span>{{ os.license }}</span>
@@ -77,7 +76,7 @@ interface ICredit {
 
 interface IOpenSource {
   name: string;
-  description: string;
+  description?: string;
   license: "MIT License" | "GNU LGPL" | "BSD License" | "CC0";
   link: {
     name: string;
@@ -121,6 +120,11 @@ export default class AboutPage extends Vue {
           text: "Copyright ⓒ NEXON GAMES Co., Ltd.",
         },
       ],
+    },
+    {
+      description: "사용된 폰트",
+      name: "경기도 서체 (경기천년제목)",
+      link: "https://www.gg.go.kr/contents/contents.do?ciIdx=679&menuId=2457",
     },
   ];
 
