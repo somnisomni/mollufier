@@ -3,7 +3,7 @@
        :class="{ user: fromUser, mollu: !fromUser }">
     <div v-if="fromUser"
          class="chat-balloon">
-      {{ chatData.content }}
+      <div class="chat-balloon-content">{{ chatData.content }}</div>
     </div>
 
     <div v-else>
@@ -14,7 +14,12 @@
       <div class="chat-balloon-wrapper">
         <div class="profile-name">아로?나</div>
         <div class="chat-balloon">
-          {{ chatData.content }}
+          <div class="chat-balloon-content">{{ chatData.content }}</div>
+          <button class="chat-balloon-copy-button"
+                  @click="copyToClipboard(chatData.content)">
+            <img src="@/assets/images/mdi-content-copy.svg"
+                 alt="몰?루화된 문장 복사" />
+          </button>
         </div>
       </div>
     </div>
@@ -31,6 +36,15 @@ export default class ChatItem extends Vue {
 
   get fromUser() {
     return this.chatData.by === "user";
+  }
+
+  async copyToClipboard(content: string) {
+    try {
+      await navigator.clipboard.writeText(content);
+      alert("클립보드에 복사되었습니다.");
+    } catch {
+      alert("클립보드에 복사하는 중 오류가 발생했습니다.");
+    }
   }
 }
 </script>

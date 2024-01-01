@@ -158,19 +158,19 @@ html, body {
 
             &.user {
               justify-content: flex-end;
-  
-              .chat-balloon {
+
+              .chat-balloon .chat-balloon-content {
                 background-color: #FB93A4;
               }
             }
-  
+
             &.mollu {
               justify-content: flex-start;
 
               & > div {
                 display: flex;
                 flex-direction: row;
-    
+
                 .profile-image {
                   @include prevent-user-select;
 
@@ -178,7 +178,7 @@ html, body {
                   height: 48px;
                   border-radius: 100%;
                 }
-    
+
                 .chat-balloon-wrapper {
                   display: flex;
                   flex-direction: column;
@@ -187,19 +187,43 @@ html, body {
                   .profile-name {
                     @include prevent-user-select;
                   }
-    
+
                   .chat-balloon {
                     margin-top: 0.25rem;
-                    background-color: #4C5B70;
+
+                    .chat-balloon-content {
+                      flex-grow: 1;
+                      background-color: #4C5B70;
+                      margin-right: 0.5em;
+                    }
+
+                    button {
+                      cursor: pointer;
+
+                      width: 2.5em;
+                      height: 2.5em;
+                      padding: 0.5em;
+
+                      text-align: center;
+                      background-color: rgba(254, 254, 254, 0.66);
+                      backdrop-filter: blur(4px);
+                      border: solid 2px #FB93A4;
+                      border-radius: 0.5em;
+                    }
                   }
                 }
               }
             }
-  
+
             .chat-balloon {
-              padding: 0.5rem;
-              color: white;
-              border-radius: 0.5rem;
+              display: flex;
+              align-items: flex-start;
+
+              .chat-balloon-content {
+                padding: 0.5rem;
+                color: white;
+                border-radius: 0.5rem;
+              }
             }
           }
         }
@@ -235,12 +259,12 @@ html, body {
               min-width: 0;
               height: $input-height;
               padding: 0 0.75rem;
-  
+
               background-color: rgba(254, 254, 254, 0.66);
               backdrop-filter: blur(4px);
               border: solid 2px #FB93A4;
               border-radius: $input-height;
-  
+
               &:focus-visible {
                 outline: none;
               }
@@ -285,7 +309,7 @@ html, body {
                 box-shadow: 0 0.05rem 0.125rem rgba(251, 147, 164, 1),
                             0 0.1rem 0.2rem rgba(251, 147, 164, 1) inset;
               }
-  
+
               &:hover {
                 background-color: rgb(255, 240, 243);
               }
