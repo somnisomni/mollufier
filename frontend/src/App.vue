@@ -43,8 +43,9 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import { Component, Vue } from "vue-facing-decorator";
 
+@Component({})
 export default class App extends Vue {
   mounted(): void {
     if(this.$store.state.gaEnabled) {

@@ -11,9 +11,8 @@
     "core-js": "^3.35.0",
     "string-hash": "^1.1.3",
     "vue": "^3.4.3",
-    "vue-class-component": "^8.0.0-rc.1",
     "vue-gtag": "^2.0.1",
-    "vue-property-decorator": "^9.1.2",
+    "vue-facing-decorator": "^3.0.4",
     "vue-router": "^4.2.5",
     "vuex": "^4.1.0"
   },

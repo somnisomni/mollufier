@@ -22,12 +22,12 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
-import { Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-facing-decorator";
 import { IChatItem } from "@/scripts/interfaces";
 
+@Component({})
 export default class ChatItem extends Vue {
-  @Prop({ require: true }) chatData!: IChatItem;
+  @Prop({ required: true }) chatData!: IChatItem;
 
   get fromUser() {
     return this.chatData.by === "user";

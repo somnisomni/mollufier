@@ -38,14 +38,14 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { Component, Vue } from "vue-facing-decorator";
 import stringHash from "string-hash";
 import { event } from "vue-gtag";
 import ChatItem from "@/components/ChatItem.vue";
 import mollufy, { checkHealth } from "@/scripts/mollufy";
 import { IChatItem } from "@/scripts/interfaces";
 
-@Options({
+@Component({
   components: {
     ChatItem,
   },

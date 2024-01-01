@@ -6595,11 +6595,6 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-vue-class-component@^8.0.0-rc.1:
-  version "8.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-8.0.0-rc.1.tgz#db692cd97656eb9a08206c03d0b7398cdb1d9420"
-  integrity sha512-w1nMzsT/UdbDAXKqhwTmSoyuJzUXKrxLE77PCFVuC6syr8acdFDAq116xgvZh9UCuV0h+rlCtxXolr3Hi3HyPQ==
-
 vue-eslint-parser@^9.0.1, vue-eslint-parser@^9.3.1:
   version "9.3.2"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-9.3.2.tgz#6f9638e55703f1c77875a19026347548d93fd499"
@@ -6612,6 +6607,11 @@ vue-eslint-parser@^9.0.1, vue-eslint-parser@^9.3.1:
     esquery "^1.4.0"
     lodash "^4.17.21"
     semver "^7.3.6"
+
+vue-facing-decorator@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/vue-facing-decorator/-/vue-facing-decorator-3.0.4.tgz#e005a8371aa4e3b4241fc20e7d8e8706dda209f6"
+  integrity sha512-Lk90PevJllB6qRRdLvLFjATZrv00nof1Ob6afavKL7Pc7V3eEin3vhdvEDRORdWKVvNoXhJbHejngWVuT0Pt0g==
 
 vue-gtag@^2.0.1:
   version "2.0.1"
@@ -6631,11 +6631,6 @@ vue-loader@^17.0.0:
     chalk "^4.1.0"
     hash-sum "^2.0.0"
     watchpack "^2.4.0"
-
-vue-property-decorator@^9.1.2:
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-9.1.2.tgz#266a2eac61ba6527e2e68a6933cfb98fddab5457"
-  integrity sha512-xYA8MkZynPBGd/w5QFJ2d/NM0z/YeegMqYTphy7NJQXbZcuU6FC6AOdUAcy4SXP+YnkerC6AfH+ldg7PDk9ESQ==
 
 vue-router@^4.2.5:
   version "4.2.5"
