@@ -8,33 +8,33 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^1.2.1",
-    "core-js": "^3.26.1",
+    "axios": "^1.6.3",
+    "core-js": "^3.35.0",
     "string-hash": "^1.1.3",
-    "vue": "^3.2.45",
+    "vue": "^3.4.3",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-gtag": "^2.0.1",
     "vue-property-decorator": "^9.1.2",
-    "vue-router": "^4.1.6",
+    "vue-router": "^4.2.5",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@types/string-hash": "^1.1.1",
-    "@typescript-eslint/eslint-plugin": "^5.45.1",
-    "@typescript-eslint/parser": "^5.45.1",
+    "@types/string-hash": "^1.1.3",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/cli-plugin-router": "^5.0.8",
     "@vue/cli-plugin-typescript": "^5.0.8",
     "@vue/cli-plugin-vuex": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
-    "@vue/eslint-config-typescript": "^11.0.2",
-    "eslint": "^8.29.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-vue": "^9.8.0",
-    "eslint-plugin-vuejs-accessibility": "^2.0.0",
-    "sass": "^1.56.1",
-    "sass-loader": "^13.2.0",
-    "typescript": "^4.9.3"
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-vue": "^9.19.2",
+    "eslint-plugin-vuejs-accessibility": "^2.2.0",
+    "sass": "^1.69.6",
+    "sass-loader": "^13.3.3",
+    "typescript": "^5.3.3"
   }
 }

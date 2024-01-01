@@ -5,9 +5,11 @@ node_modules
 # dev server script
 run-devserver.sh
 
-# local env files
-.env.local
-.env.*.local
+# env files
+.env
+.env.*
+!.env.example
+!.env.*.example
 
 # Log files
 npm-debug.log*
