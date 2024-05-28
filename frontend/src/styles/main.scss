@@ -81,6 +81,20 @@ html, body {
 
       .title-icons-container {
         flex-shrink: 0;
+        height: 100%;
+
+        .menu {
+          height: 100%;
+          border: 0;
+          background: none;
+          display: none;
+          align-items: center;
+          cursor: pointer;
+
+          img {
+            height: 40px;
+          }
+        }
       }
     }
 
@@ -375,6 +389,12 @@ html, body {
         }
       }
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .title-icons-container .menu {
+    display: flex;
   }
 }
 

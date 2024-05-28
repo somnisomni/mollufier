@@ -5,7 +5,10 @@
         <span class="title">몰?루파이어 <small>Mollufier</small></span>
 
         <div class="title-icons-container">
-
+          <button class="menu" type="button">
+            <img src="@/assets/images/bars.svg"
+                 alt="메뉴" />
+          </button>
         </div>
       </div>
 
