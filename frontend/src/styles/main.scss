@@ -385,6 +385,9 @@ $momotalk-left-tab-width: 4.5rem;
         left: -$momotalk-left-tab-width;
         z-index: 100;
       }
+      .left-tab.on {
+        left: 0;
+      }
         .content-wrapper {
           width: 100%;
           .input-container {
