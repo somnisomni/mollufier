@@ -112,7 +112,10 @@ html, body {
         flex-shrink: 0;
 
         width: $momotalk-left-tab-width;
+        height: 100%;
         background-color: #4C5B70;
+
+        transition: 0.2s;
 
         .tab {
           cursor: pointer;
@@ -373,7 +376,16 @@ html, body {
       border-radius: 0;
 
       .content-container {
+        position: relative;
+        .title-icons-container .menu {
+            display: flex;
+        }
         .content-wrapper {
+          width: auto;
+          .left-tab {
+            position: absolute;
+            left: -$momotalk-left-tab-width;
+          }
           .input-container {
             flex-direction: column;
 
@@ -389,12 +401,6 @@ html, body {
         }
       }
     }
-  }
-}
-
-@media (max-width: 767px) {
-  .title-icons-container .menu {
-    display: flex;
   }
 }
 
