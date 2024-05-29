@@ -385,6 +385,7 @@ html, body {
           .left-tab {
             position: absolute;
             left: -$momotalk-left-tab-width;
+            z-index: 100;
           }
           .input-container {
             flex-direction: column;
