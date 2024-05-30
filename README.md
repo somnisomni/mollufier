@@ -20,6 +20,20 @@
   <figcaption><p align="center" style="color: gray"><s>그런거 없으면 만들면 된다!</s></p></figcaption>
 </figure>
 
+개발 서버 실행하기
+------------------
+ ```sh
+ # 백엔드
+ $ cd backend
+ $ pip3 install -r requirements.txt
+ $ python3 index.py
+
+ # 프론트엔드
+ $ cd frontend
+ $ yarn install
+ $ yarn serve
+ ```
+
 Docker로 배포하기
 -----------------
  [6d54e64](https://github.com/somnisomni/mollufier/commit/6d54e64defad66ab4af868b2003a83c17b5e8403) 커밋 이후로 Docker를 통해 간편히 앱을 배포(실행)할 수 있게 되었습니다.
@@ -32,12 +46,12 @@ Docker로 배포하기
      --build-arg FE_BACKEND_BASE_URL="<backend base url>"
      --build-arg FE_GA_MEASUREMENT_ID="<measurement id>" \ .
    ```
-   - **빌드 인수 `FE_PUBLIC_PATH`** : *(선택적, 기본값 `/`)* 앱의 프론트엔드가 배포되는 URL 주소의 루트 경로입니다.  
-     프론트엔드 URL 루트가 도메인의 루트라면 기본값을 사용하면 됩니다. (ex. `https://example.com/`에 배포하는 경우)  
+   - **빌드 인수 `FE_PUBLIC_PATH`** : *(선택적, 기본값 `/`)* 앱의 프론트엔드가 배포되는 URL 주소의 루트 경로입니다.
+     프론트엔드 URL 루트가 도메인의 루트라면 기본값을 사용하면 됩니다. (ex. `https://example.com/`에 배포하는 경우)
      하위 디렉토리에서 프론트엔드를 배포할 경우 도메인 루트부터 시작한 값으로 설정합니다. (ex. `https://example.com/mollufier`에 배포하는 경우 `/mollufier`로 인수 값 설정)
-   - **빌드 인수 `FE_BACKEND_BASE_URL`** : *(선택적, 기본값 `/api`)* 앱의 백엔드가 배포되는 URL입니다.  
+   - **빌드 인수 `FE_BACKEND_BASE_URL`** : *(선택적, 기본값 `/api`)* 앱의 백엔드가 배포되는 URL입니다.
      백엔드를 다른 URL 상에서 배포를 할 경우, 절대 또는 상대 경로의 URL을 값으로 설정합니다. (ex. `https://api.example.com/mollufier`에 배포하는 경우 그 URL을 그대로 인수 값 설정)
-   - **빌드 인수 `FE_GA_MEASUREMENT_ID`** : *(선택적, 기본값 공란)* Google Analytics 측정 ID입니다.  
+   - **빌드 인수 `FE_GA_MEASUREMENT_ID`** : *(선택적, 기본값 공란)* Google Analytics 측정 ID입니다.
      값을 지정하지 않거나 비어 있는 값을 지정할 경우 Google Analytics가 탑재되지 않습니다.
   2. 이미지 빌드가 완료되면 컨테이너를 생성하여 실행합니다.
    ```sh
@@ -49,13 +63,13 @@ Docker로 배포하기
      --name mollufier \
      mollufier:latest
    ```
-   - **환경 변수 `FE_DEPLOY_HOST`** : *(선택적, 기본값 공란)* 앱의 프론트엔드가 배포되는 호스트(도메인)입니다.  
-     이 환경 변수를 지정하면 백엔드의 CORS Origin이 지정한 값으로 한정됩니다. 지정하지 않은 경우 CORS Origin이 모든 도메인으로 설정됩니다.  
+   - **환경 변수 `FE_DEPLOY_HOST`** : *(선택적, 기본값 공란)* 앱의 프론트엔드가 배포되는 호스트(도메인)입니다.
+     이 환경 변수를 지정하면 백엔드의 CORS Origin이 지정한 값으로 한정됩니다. 지정하지 않은 경우 CORS Origin이 모든 도메인으로 설정됩니다.
      프로토콜과 (프로토콜의 기본 포트가 아닌 경우) 포트가 포함된 값이 필요합니다. (ex. `https://example.com`, `http://testserver.local:3939`)
 
    컨테이너 내부에서 프론트엔드는 포트 **8080**, 백엔드는 포트 **8081**로 실행됩니다. 포트 바인딩을 할 경우 이에 맞추어 바인딩하면 됩니다.
-   
-   > ※ **주의!** 이 리포지토리의 Dockerfile로 빌드하는 경우, 몰?루파이어의 프론트엔드와 백엔드는 각각 간단한 웹 서버([http-server](https://www.npmjs.com/package/http-server) 및 [Flask](https://flask.palletsprojects.com/))를 통해 실행됩니다.  
+
+   > ※ **주의!** 이 리포지토리의 Dockerfile로 빌드하는 경우, 몰?루파이어의 프론트엔드와 백엔드는 각각 간단한 웹 서버([http-server](https://www.npmjs.com/package/http-server) 및 [Flask](https://flask.palletsprojects.com/))를 통해 실행됩니다.
    > 프로덕션으로 배포하기에는 보안에 취약할 가능성이 크기 때문에, [nginx](http://nginx.org/) 등 고급 웹 서버 소프트웨어에서 제공하는 [리버스 프록시](https://www.cloudflare.com/ko-kr/learning/cdn/glossary/reverse-proxy/)를 이용한 배포가 권장됩니다.
 
 라이선스
