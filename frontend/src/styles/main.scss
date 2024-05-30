@@ -61,7 +61,7 @@ $momotalk-left-tab-width: 4.5rem;
       @include prevent-user-select;
 
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
       align-items: center;
 
       width: 100%;
@@ -84,6 +84,8 @@ $momotalk-left-tab-width: 4.5rem;
         height: 100%;
 
         .menu {
+          padding: 0;
+          margin-right: 0.5rem;
           height: 100%;
           border: 0;
           background: none;
@@ -92,7 +94,8 @@ $momotalk-left-tab-width: 4.5rem;
           cursor: pointer;
 
           img {
-            height: 40px;
+            width: 32px;
+            height: 32px;
           }
         }
       }

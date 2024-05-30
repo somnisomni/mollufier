@@ -2,14 +2,16 @@
   <div class="momotalk-wrapper">
     <div class="momotalk-container">
       <div class="title-container">
-        <span class="title">몰?루파이어 <small>Mollufier</small></span>
-
         <div class="title-icons-container">
-          <button class="menu" type="button" @click="toggleLeftTab">
+          <button class="menu"
+                  type="button"
+                  @click="toggleLeftTab">
             <img src="@/assets/images/bars.svg"
                  alt="메뉴" />
           </button>
         </div>
+
+        <span class="title">몰?루파이어 <small>Mollufier</small></span>
       </div>
 
       <div class="content-container">
