@@ -16,33 +16,33 @@
 
       <div class="content-container">
         <div :class="['left-tab', { on: isLeftTabOn }]">
-          <router-link to="/" replace class="tab active" @click="toggleLeftTab">
+          <RouterLink to="/" replace class="tab active" @click="toggleLeftTab">
             <img src="@/assets/images/mdi-pencil.svg"
                  alt="메인 페이지" />
-          </router-link>
-          <router-link to="/settings" replace class="tab" @click="toggleLeftTab">
+          </RouterLink>
+          <RouterLink to="/settings" replace class="tab" @click="toggleLeftTab">
             <img src="@/assets/images/mdi-cog.svg"
                  alt="설정 페이지" />
-          </router-link>
-          <router-link to="/about" replace class="tab" @click="toggleLeftTab">
+          </RouterLink>
+          <RouterLink to="/about" replace class="tab" @click="toggleLeftTab">
             <img src="@/assets/images/mdi-info.svg"
                  alt="몰?루파이어 정보 페이지" />
-          </router-link>
+          </RouterLink>
         </div>
 
         <div class="content-wrapper">
-          <router-view v-slot="{ Component }">
-            <keep-alive>
+          <RouterView v-slot="{ Component }">
+            <KeepAlive>
               <component :is="Component" />
-            </keep-alive>
-          </router-view>
+            </KeepAlive>
+          </RouterView>
         </div>
       </div>
 
       <img class="container-background-image"
            src="@/assets/images/mollu_coconutcorn.png"
            alt="블루아카콘 by coconutcorn - 몰?루 이미지"
-           :class="{ anim: useSettingsStore().enableMolluImageAnimation }" />
+           :class="{ anim: shouldEnableMolluImageAnimation }" />
     </div>
   </div>
 </template>
@@ -54,8 +54,11 @@ import useSettingsStore from "./plugins/store/settings";
 
 @Component({})
 export default class App extends Vue {
-  readonly useSettingsStore = useSettingsStore;
   isLeftTabOn: boolean = false;
+
+  get shouldEnableMolluImageAnimation(): boolean {
+    return useSettingsStore().enableMolluImageAnimation;
+  }
 
   mounted(): void {
     if(useAppStore().gaEnabled) {

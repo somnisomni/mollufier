@@ -6,11 +6,11 @@
     <div v-if="chats.length === 0"
          style="margin-top: 1rem; text-align: center; opacity: 0.5;">몰?루화한 문장 내역이 여기에 표시됩니다.</div>
 
-    <transition-group name="slide-up">
-      <chat-item v-for="chat in chats"
+    <TransitionGroup name="slide-up">
+      <ChatItem v-for="chat in chats"
                  :key="chat.hash"
                  :chatData="chat" />
-    </transition-group>
+    </TransitionGroup>
   </div>
 
   <div class="input-container">

@@ -40,34 +40,34 @@ import { Component, Vue } from "vue-facing-decorator";
 
 @Component({})
 export default class SettingsPage extends Vue {
+  /* mollufyOptions.ignoreNounLengthLimit */
   get ignoreNounLengthLimit() {
     return useSettingsStore().mollufyOptions.ignoreNounLengthLimit;
   }
-
   set ignoreNounLengthLimit(value: boolean) {
     useSettingsStore().mollufyOptions.ignoreNounLengthLimit = value;
   }
 
+  /* mollufyOptions.changeMolluMark */
   get changeMolluMark() {
     return useSettingsStore().mollufyOptions.changeMolluMark;
   }
-
   set changeMolluMark(value: boolean) {
     useSettingsStore().mollufyOptions.changeMolluMark = value;
   }
 
+  /* mollufyOptions.forceMollufyForPredefinedWords */
   get forceMollufyForPredefinedWords() {
     return useSettingsStore().mollufyOptions.forceMollufyForPredefinedWords;
   }
-
   set forceMollufyForPredefinedWords(value: boolean) {
     useSettingsStore().mollufyOptions.forceMollufyForPredefinedWords = value;
   }
 
+  /* enableMolluImageAnimation */
   get enableMolluImageAnimation() {
     return useSettingsStore().enableMolluImageAnimation;
   }
-
   set enableMolluImageAnimation(value: boolean) {
     useSettingsStore().enableMolluImageAnimation = value;
   }

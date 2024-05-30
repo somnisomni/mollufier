@@ -1,7 +1,7 @@
 <template>
   <div class="about-container">
     <div>
-      <h1>몰?루파이어 <small>v{{ useAppStore().appVersion }}</small></h1>
+      <h1>몰?루파이어 <small>v{{ appVersion }}</small></h1>
       <p>명사 사이에 물음표를 넣어주어 문장을 "몰?루화"해줍니다.</p>
       <p style="color: gray"><s>프라나 사랑해</s></p>
     </div>
@@ -53,7 +53,7 @@
       </p>
     </div>
 
-    <div v-if="useAppStore().gaEnabled">
+    <div v-if="isGAEnabled">
       <hr />
       <p>이 웹 앱은 방문 통계 확인용으로 Google Analytics를 사용합니다. 사용자가 입력한 문장 및 기타 민감한 데이터는 서버에 저장하거나 Google 및 타 서비스에 공유하지 않습니다.</p>
     </div>
@@ -86,9 +86,7 @@ interface IOpenSource {
 
 @Component({})
 export default class AboutPage extends Vue {
-  readonly useAppStore = useAppStore;
-
-  readonly CREDITS: ICredit[] = [
+  readonly CREDITS: Array<ICredit> = [
     {
       description: "만든이",
       name: "somni (@somni_somni)",
@@ -128,7 +126,7 @@ export default class AboutPage extends Vue {
     },
   ];
 
-  readonly OPENSOURCES: IOpenSource[] = [
+  readonly OPENSOURCES: Array<IOpenSource> = [
     {
       name: "Kiwi",
       description: "지능형 한국어 형태소 분석기",
@@ -238,6 +236,14 @@ export default class AboutPage extends Vue {
       },
     },
   ];
+
+  get appVersion(): string {
+    return useAppStore().appVersion;
+  }
+
+  get isGAEnabled(): boolean {
+    return useAppStore().gaEnabled;
+  }
 }
 </script>
 
