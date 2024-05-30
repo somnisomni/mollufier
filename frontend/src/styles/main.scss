@@ -31,9 +31,9 @@ html, body {
   background-position: center;
 }
 
+$momotalk-title-height: 3.25rem;
+$momotalk-left-tab-width: 4.5rem;
 .momotalk-wrapper {
-  $momotalk-title-height: 3.25rem;
-  $momotalk-left-tab-width: 4.5rem;
 
   display: flex;
   justify-content: center;
@@ -81,6 +81,20 @@ html, body {
 
       .title-icons-container {
         flex-shrink: 0;
+        height: 100%;
+
+        .menu {
+          height: 100%;
+          border: 0;
+          background: none;
+          display: none;
+          align-items: center;
+          cursor: pointer;
+
+          img {
+            height: 40px;
+          }
+        }
       }
     }
 
@@ -98,7 +112,10 @@ html, body {
         flex-shrink: 0;
 
         width: $momotalk-left-tab-width;
+        height: 100%;
         background-color: #4C5B70;
+
+        transition: 0.2s;
 
         .tab {
           cursor: pointer;
@@ -358,8 +375,21 @@ html, body {
       height: 100%;
       border-radius: 0;
 
+      .title-container .menu {
+        display: flex !important;
+      }
       .content-container {
+        position: relative;
+      .left-tab {
+        position: absolute;
+        left: -$momotalk-left-tab-width;
+        z-index: 100;
+      }
+      .left-tab.on {
+        left: 0;
+      }
         .content-wrapper {
+          width: 100%;
           .input-container {
             flex-direction: column;
 
